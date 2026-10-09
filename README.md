@@ -6,9 +6,6 @@
 
 **Encrypted DNS for Windows — with a recovery path you can actually trust.**
 
-[![CI](https://github.com/namtit2932k/vinpn/actions/workflows/ci.yml/badge.svg)](https://github.com/namtit2932k/vinpn/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/namtit2932k/vinpn?include_prereleases)](https://github.com/namtit2932k/vinpn/releases)
-[![Downloads](https://img.shields.io/github/downloads/namtit2932k/vinpn/total)](https://github.com/namtit2932k/vinpn/releases)
 [![License: GPL v3](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20x64-blue)
 
