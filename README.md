@@ -11,7 +11,7 @@
 
 English · [Tiếng Việt](README.vi.md)
 
-<a href="https://github.com/namtit2932k/vinpn/releases/latest/download/vinpn-amd64-installer.exe"><img src="https://img.shields.io/badge/%E2%AC%87%20Download-Windows%2010%2F11%20x64-2ea44f?style=for-the-badge" alt="Download VinPN for Windows"></a>
+<a href="https://github.com/namtit2932k/vinpn/releases"><img src="https://img.shields.io/badge/%E2%AC%87%20Download-Windows%2010%2F11%20x64-2ea44f?style=for-the-badge" alt="Download VinPN for Windows"></a>
 
 </div>
 
