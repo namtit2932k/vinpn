@@ -6,15 +6,15 @@
 
 **Encrypted DNS for Windows — with a recovery path you can actually trust.**
 
-[![CI](https://github.com/sickyturtlez/vinpn/actions/workflows/ci.yml/badge.svg)](https://github.com/sickyturtlez/vinpn/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/sickyturtlez/vinpn?include_prereleases)](https://github.com/sickyturtlez/vinpn/releases)
-[![Downloads](https://img.shields.io/github/downloads/sickyturtlez/vinpn/total)](https://github.com/sickyturtlez/vinpn/releases)
+[![CI](https://github.com/namtit2932k/vinpn/actions/workflows/ci.yml/badge.svg)](https://github.com/namtit2932k/vinpn/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/namtit2932k/vinpn?include_prereleases)](https://github.com/namtit2932k/vinpn/releases)
+[![Downloads](https://img.shields.io/github/downloads/namtit2932k/vinpn/total)](https://github.com/namtit2932k/vinpn/releases)
 [![License: GPL v3](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11%20x64-blue)
 
 English · [Tiếng Việt](README.vi.md)
 
-<a href="https://github.com/sickyturtlez/vinpn/releases/latest/download/vinpn-amd64-installer.exe"><img src="https://img.shields.io/badge/%E2%AC%87%20Download-Windows%2010%2F11%20x64-2ea44f?style=for-the-badge" alt="Download VinPN for Windows"></a>
+<a href="https://github.com/namtit2932k/vinpn/releases/latest/download/vinpn-amd64-installer.exe"><img src="https://img.shields.io/badge/%E2%AC%87%20Download-Windows%2010%2F11%20x64-2ea44f?style=for-the-badge" alt="Download VinPN for Windows"></a>
 
 </div>
 
@@ -99,7 +99,7 @@ Requirements: Go 1.27+, Node 24+, [wails3](https://wails.io).
 ```bash
 go install github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-beta.27
 
-git clone https://github.com/sickyturtlez/vinpn && cd vinpn
+git clone https://github.com/namtit2932k/vinpn && cd vinpn
 cd frontend && npm ci && cd ..
 
 wails3 generate bindings -clean=true -ts -i   # TS bindings from the Go services
