@@ -1,0 +1,1010 @@
+{
+  "common": {
+    "cancel": "huỷ",
+    "close": "đóng",
+    "save": "lưu",
+    "retry": "thử lại",
+    "dismiss": "bỏ qua",
+    "understood": "đã hiểu",
+    "confirm": "xác nhận",
+    "on": "bật",
+    "off": "tắt",
+    "auto": "tự động",
+    "ms": "{{value}} ms",
+    "openLogs": "mở nhật ký ›",
+    "details": "chi tiết"
+  },
+  "title": {
+    "minimise": "thu nhỏ",
+    "close": "đóng",
+    "language": "ngôn ngữ"
+  },
+  "mode": {
+    "simple": "ĐƠN GIẢN",
+    "full": "ĐẦY ĐỦ"
+  },
+  "status": {
+    "disconnected": "CHƯA BẢO VỆ",
+    "connecting": "ĐANG KẾT NỐI",
+    "protected": "ĐÃ BẢO VỆ",
+    "degraded": "SUY GIẢM",
+    "disconnecting": "ĐANG NGẮT",
+    "error": "LỖI"
+  },
+  "step": {
+    "1": "kiểm tra hệ thống",
+    "2": "chọn máy chủ",
+    "3": "bật engine",
+    "4": "chụp DNS gốc",
+    "5": "bật lưới an toàn",
+    "6": "đặt DNS",
+    "7": "xác minh không rò rỉ"
+  },
+  "simple": {
+    "tapToConnect": "bấm để kết nối",
+    "tapToCancel": "bấm lần nữa để huỷ",
+    "encrypted": "mọi truy vấn DNS đều được mã hoá",
+    "errorUnchanged": "DNS của máy vẫn như cũ, không có gì bị thay đổi",
+    "server": "máy chủ",
+    "serverAuto": "tự động",
+    "latency": "độ trễ",
+    "dpi": "vượt dpi",
+    "uptime": "thời gian",
+    "lastScan": "lần quét",
+    "never": "chưa quét",
+    "blocked": "{{count}}/{{total}} trang mẫu vẫn bị chặn",
+    "autotune": "TỰ DÒ VƯỢT DPI",
+    "autotuning": "đang dò: {{preset}} ({{index}}/{{total}})",
+    "enableFragment": "BẬT FRAGMENT DNS",
+    "proxy": "proxy",
+    "openServers": "mở trang máy chủ",
+    "disablePinnedOnly": "tắt chỉ dùng máy chủ ghim",
+    "dnsLan": "DNS cho LAN",
+    "level": {
+      "label": "mức bảo vệ",
+      "dns": "Chỉ DNS",
+      "dpi": "DNS + vượt DPI",
+      "max": "Tối đa",
+      "custom": "Tuỳ chỉnh",
+      "hint": {
+        "dns": "Chỉ mã hoá DNS; nhẹ nhất, hợp khi nhà mạng chỉ chặn bằng DNS.",
+        "dpi": "Thêm vượt DPI cho mọi ứng dụng (khuyên dùng).",
+        "max": "Thêm proxy cho máy này: trình duyệt tự được fragment khi gặp trang bị chặn.",
+        "custom": "Tổ hợp bạn tự chỉnh ở giao diện Đầy đủ."
+      },
+      "part": {
+        "dpi": "vượt DPI",
+        "proxy": "proxy",
+        "proxyNoSystem": "proxy (không dùng cho máy này)",
+        "none": "chỉ DNS"
+      },
+      "editInFull": "chỉnh ở giao diện Đầy đủ ›",
+      "fakeSniOff": "Fake SNI cần proxy và sẽ bị tắt. Tiếp tục?",
+      "applying": "Đang áp dụng “{{level}}”…"
+    },
+    "firstRun": {
+      "probe": "kiểm tra trang mẫu…",
+      "tune": "tự dò vượt DPI với trang mẫu {{index}}/{{total}}"
+    }
+  },
+  "nav": {
+    "overview": "tổng quan",
+    "servers": "máy chủ",
+    "dpi": "vượt dpi",
+    "tools": "công cụ",
+    "logs": "nhật ký",
+    "settings": "cài đặt",
+    "proxy": "proxy",
+    "rules": "rules",
+    "dnsserver": "dns server",
+    "fakesni": "fake sni",
+    "group": {
+      "basic": "cơ bản",
+      "advanced": "nâng cao",
+      "diagnose": "chẩn đoán"
+    }
+  },
+  "overview": {
+    "latency60": "độ trễ · 60 giây",
+    "queries": "truy vấn",
+    "inUse": "máy chủ đang dùng",
+    "route": "127.0.0.1 → {{servers}}",
+    "proxy": "proxy",
+    "dnsserver": "DNS server",
+    "dnsDevices": "{{count}} thiết bị LAN",
+    "fakesni": "Fake SNI",
+    "fakesniDomains": "{{count}} tên miền"
+  },
+  "servers": {
+    "title": "MÁY CHỦ",
+    "ok": "đạt {{count}}",
+    "scanAll": "⟳ quét toàn bộ",
+    "scanning": "đang quét {{done}}/{{total}} · huỷ",
+    "add": "+ thêm",
+    "name": "tên",
+    "protocol": "giao thức",
+    "latency": "độ trễ",
+    "state": "trạng thái",
+    "tags": "nhãn",
+    "inUse": "đang dùng",
+    "pass": "đạt",
+    "notChecked": "chưa kiểm tra",
+    "filter": "lọc",
+    "onlyOk": "chỉ đạt",
+    "pinnedOnly": "chỉ dùng máy chủ đã ghim",
+    "scannedAt": "quét lúc {{time}}",
+    "pin": "ghim",
+    "remove": "xoá",
+    "addTitle": "Thêm máy chủ",
+    "addHint": "Dán URL (https://, tls://, quic://) hoặc stamp sdns://, mỗi dòng một máy chủ.",
+    "importFile": "import từ file",
+    "added": "đã thêm {{count}} máy chủ",
+    "rejected": "bị từ chối: {{lines}}",
+    "search": "tìm máy chủ",
+    "searchHint": "tìm theo tên, IP, địa chỉ, nhãn…",
+    "clearSearch": "xoá tìm kiếm",
+    "noMatch": "không có máy chủ nào khớp",
+    "matched": "khớp {{count}}",
+    "pinnedChip": "★ đã ghim ({{count}})",
+    "pinAllResults": "★ ghim {{count}} kết quả",
+    "unpinAll": "bỏ ghim tất cả",
+    "pinsChanged": "đã đổi máy chủ ghim",
+    "reconnect": "kết nối lại để áp dụng",
+    "pinnedPreferred": "máy chủ đã ghim được ưu tiên khi kết nối",
+    "pinnedOnlyNeedsPin": "ⓘ Chưa ghim máy chủ nào. Bấm ☆ hoặc double-click một dòng để ghim; cần có ít nhất một máy chủ ghim mới bật được \"chỉ dùng máy chủ đã ghim\".",
+    "menu": {
+      "pin": "★ ghim",
+      "unpin": "☆ bỏ ghim",
+      "useOnly": "⚡ chỉ dùng máy chủ này",
+      "recheck": "⟳ kiểm tra lại",
+      "copyAddress": "⧉ sao chép địa chỉ",
+      "copyIP": "⧉ sao chép IP",
+      "remove": "✕ xoá",
+      "useOnlyConfirm": "Chỉ dùng {{name}} và bỏ ghim {{count}} máy chủ khác?"
+    }
+  },
+  "dpi": {
+    "title": "VƯỢT DPI",
+    "legalNote": "Bạn tự chịu trách nhiệm tuân thủ pháp luật nơi mình sinh sống và điều khoản của nhà mạng. Không dùng tính năng này để truy cập nội dung bị cấm theo quy định của pháp luật.",
+    "preset": "preset",
+    "presets": {
+      "light": "Nhẹ",
+      "medium": "Vừa",
+      "high": "Mạnh",
+      "extreme": "Cực mạnh",
+      "mode1": "Mode 1",
+      "mode2": "Mode 2",
+      "mode3": "Mode 3",
+      "mode4": "Mode 4",
+      "mode5": "Mode 5",
+      "mode6": "Mode 6",
+      "custom": "Tự nhập"
+    },
+    "customArgs": "tham số tự nhập",
+    "autotune": "⚡ tự dò",
+    "scope": "phạm vi",
+    "scopeAll": "mọi kết nối",
+    "scopeBlacklist": "danh sách đen",
+    "blacklistTitle": "Danh sách đen (mỗi dòng một domain)",
+    "preview": "dòng lệnh",
+    "fragment": "FRAGMENT DNS",
+    "chunks": "số mảnh",
+    "delay": "độ trễ (ms)",
+    "redundant": "ⓘ thừa khi vượt DPI đang bật",
+    "waiting": "Đã bật — sẽ chạy khi kết nối",
+    "starting": "đang khởi động…",
+    "probeSites": "TRANG MẪU",
+    "probeAgain": "⟳ thử lại",
+    "stage": {
+      "ok": "✓",
+      "dns": "✕ DNS",
+      "tcp": "✕ TCP",
+      "tls": "✕ TLS",
+      "http": "✕ HTTP"
+    },
+    "webFragmentNote": "Fragment web (trang Proxy) chỉ áp dụng cho ứng dụng đi qua proxy; vượt DPI ở đây áp dụng cho mọi ứng dụng.",
+    "blacklistSuggested": "gợi ý từ trang mẫu — sửa rồi bấm lưu để dùng",
+    "blacklistSaved": "đã lưu",
+    "blacklistSavedRestart": "đã lưu — {{engine}} đã khởi động lại",
+    "engineTitle": "VƯỢT DPI CHO MỌI ỨNG DỤNG",
+    "engine": {
+      "label": "engine",
+      "zapret2": "zapret2 (khuyên dùng)",
+      "goodbyedpi": "GoodbyeDPI",
+      "zapret2Desc": "Mạnh hơn: gói giả, nhiều kiểu cắt, hỗ trợ QUIC",
+      "goodbyedpiDesc": "Engine cũ, đơn giản"
+    },
+    "engineHint": {
+      "text": "Thử engine mới zapret2: mạnh hơn, hỗ trợ QUIC.",
+      "try": "dùng zapret2",
+      "dismiss": "ẩn gợi ý"
+    },
+    "fallback": {
+      "text": "zapret2 bị chặn (có thể do phần mềm diệt virus), đang dùng tạm GoodbyeDPI. Thêm thư mục {{dir}} vào danh sách loại trừ của Windows Defender rồi thử lại.",
+      "retry": "thử lại zapret2"
+    },
+    "autoHostlist": {
+      "label": "tự phát hiện trang bị chặn",
+      "empty": "chưa phát hiện trang nào",
+      "removeOne": "xoá {{domain}}",
+      "clear": "xoá hết"
+    },
+    "blacklistSavedReload": "đã lưu — zapret2 đã nạp danh sách mới",
+    "autotuneDone": "✓ tự dò đã chọn {{preset}} ({{engine}})"
+  },
+  "logs": {
+    "title": "NHẬT KÝ",
+    "all": "tất cả",
+    "engine": "engine",
+    "dpi": "dpi",
+    "system": "hệ thống",
+    "pause": "tạm dừng",
+    "resume": "tiếp tục",
+    "copy": "copy",
+    "save": "lưu file",
+    "queries": "hiện truy vấn",
+    "queriesNote": "chỉ giữ trong RAM, tối đa 500 dòng, không ghi xuống đĩa",
+    "proxy": "proxy",
+    "rules": "rules"
+  },
+  "log": {
+    "CONNECTED": "đã kết nối với {{servers}} máy chủ",
+    "DISCONNECTED": "đã ngắt kết nối, DNS đã trả về như cũ",
+    "CONNECT_CANCELLED": "đã huỷ kết nối",
+    "DEGRADED": "máy chủ không phản hồi, đang tìm máy chủ khác",
+    "SWAPPED": "đã chuyển sang {{servers}} máy chủ mới",
+    "SWAP_FAILED": "không đổi được máy chủ",
+    "ADAPTER_ADDED": "đã bảo vệ card mạng mới: {{adapter}}",
+    "SITES_BLOCKED": "{{count}} trang mẫu bị chặn ở tầng TLS",
+    "DPI_STARTED": "{{engine}} đã chạy (preset {{preset}})",
+    "DPI_STOPPED": "đã tắt vượt DPI",
+    "AUTOTUNE_TRY": "tự dò: thử {{preset}}",
+    "AUTOTUNE_FOUND": "tự dò: dùng {{preset}}",
+    "PROXY_STARTED": "proxy đang chạy tại {{addr}}",
+    "PROXY_RESTART": "proxy ngừng lắng nghe, đang khởi động lại",
+    "DPI_FALLBACK": "{{from}} không chạy được ({{cause}}), đang dùng {{to}}",
+    "AUTOTUNE_ENGINE_SWITCHED": "tự dò đã chuyển sang {{to}} (preset {{preset}})",
+    "DPI_STRATEGY_RESET": "chiến lược {{from}} không còn, dùng {{to}}",
+    "DNSSERVER_STARTED": "DNS server đang chạy trên {{addrs}} địa chỉ",
+    "DNSSERVER_RESTART": "IP LAN đổi, đang khởi động lại DNS server",
+    "FAKESNI_STARTED": "Fake SNI đang bật cho {{domains}} tên miền",
+    "FAKESNI_ROTATED": "đã thay CA Fake SNI ({{domains}} tên miền)"
+  },
+  "settings": {
+    "title": "CÀI ĐẶT",
+    "language": "ngôn ngữ",
+    "startWithWindows": "khởi động cùng windows",
+    "autoConnect": "tự kết nối khi mở",
+    "closeToTray": "đóng → thu xuống khay",
+    "adapters": "card mạng",
+    "adaptersManual": "chọn tay",
+    "testDomain": "tên miền thử",
+    "bootstrap": "bootstrap (ip:port, mỗi dòng một)",
+    "maxUpstreams": "số máy chủ tối đa",
+    "updateServerList": "cập nhật danh sách máy chủ",
+    "checkApp": "báo có bản mới",
+    "restoreNow": "⚠ KHÔI PHỤC DNS NGAY",
+    "restored": "đã khôi phục DNS",
+    "stopService": "Tạm dừng dịch vụ {{name}}",
+    "stopServiceConfirm": "Dịch vụ {{name}} của Windows đang giữ cổng 53. Tạm dừng nó có thể làm Mobile Hotspot, WSL hoặc Hyper-V ngừng hoạt động cho tới khi khởi động lại máy. Tiếp tục?",
+    "saved": "đã lưu",
+    "version": "phiên bản {{version}}",
+    "about": "VinPN {{version}} · tác giả {{author}}",
+    "github": "GitHub ↗",
+    "update": "có bản mới {{tag}} ↗",
+    "checkUpdate": "kiểm tra cập nhật",
+    "checking": "đang kiểm tra…",
+    "upToDate": "đã là bản mới nhất ({{version}})",
+    "certs": {
+      "title": "chứng chỉ",
+      "none": "không có chứng chỉ VinPN nào trong Windows",
+      "removeAll": "gỡ tất cả chứng chỉ VinPN",
+      "confirmRemoveAll": "Gỡ mọi chứng chỉ VinPN? DNS server và Fake SNI sẽ bị tắt.",
+      "retry": "thử gỡ lại"
+    },
+    "backup": {
+      "title": "Sao lưu và chuyển máy",
+      "note": "Xuất cài đặt, rule, danh sách và server tự thêm ra một file để dùng trên máy khác.",
+      "export": "xuất cài đặt…",
+      "import": "nhập cài đặt…",
+      "exportTitle": "Chọn phần cần xuất",
+      "doExport": "xuất",
+      "neverExported": "Không bao giờ xuất: tên Wi-Fi nhà, card mạng, mật khẩu proxy, nhật ký, chứng chỉ.",
+      "sec": {
+        "settings": "cài đặt",
+        "rules": "rule và danh sách",
+        "customServers": "server tự thêm",
+        "dpiBlacklist": "danh sách đen vượt DPI",
+        "dpiAutoHostlist": "danh sách tự học zapret2"
+      },
+      "importTitle": "Nhập cài đặt",
+      "fileInfo": "File từ VinPN {{version}}, tạo ngày {{date}}",
+      "counts": "(mới {{new}} · bị thay {{replaced}})",
+      "merge": "gộp với dữ liệu hiện có",
+      "doImport": "nhập",
+      "imported": "Đã nhập. Bấm Kết nối để dùng cấu hình mới.",
+      "warn": {
+        "flag_off": {
+          "fakeSni_enabled": "Fake SNI sẽ bị tắt; bật lại trong trang Fake SNI nếu cần.",
+          "dnsServer_enabled": "DNS server sẽ bị tắt; bật lại trong trang DNS server nếu cần.",
+          "dnsServer_shareLan": "Chia sẻ DNS cho LAN sẽ bị tắt.",
+          "proxy_shareLan": "Chia sẻ proxy cho LAN sẽ bị tắt.",
+          "startWithWindows": "Khởi động cùng Windows sẽ bị tắt."
+        },
+        "trusted_reset": {
+          "x": "Danh sách \"{{name}}\" không còn được tin cho Fake SNI."
+        },
+        "http_list": {
+          "x": "Danh sách \"{{name}}\" tải qua http:// (không mã hoá)."
+        }
+      },
+      "sniTitle": "File có rule chuyển hướng lưu lượng đã giải mã (sni= / connect=):",
+      "sniAck": "Tôi hiểu các rule này chuyển hướng lưu lượng đã giải mã",
+      "sniDrop": "nhập nhưng bỏ các rule này"
+    }
+  },
+  "errors": {
+    "NOT_ADMIN": {
+      "message": "VinPN cần quyền quản trị (admin) để đổi DNS",
+      "action": "Mở lại VinPN bằng quyền admin"
+    },
+    "PORT53_BUSY": {
+      "message": "Cổng 53 đang bị {{name}} (PID {{pid}}) chiếm",
+      "action": "Tắt chương trình đó hoặc tạm dừng dịch vụ trong Cài đặt"
+    },
+    "SERVICE_NOT_ON_PORT53": {
+      "message": "{{service}} không còn chiếm cổng 53",
+      "action": "Chạy kiểm tra cổng lại"
+    },
+    "NO_SERVERS": {
+      "message": "không tìm được máy chủ hoạt động ({{checked}} đã thử trong {{elapsed}}s)",
+      "action": "Thử lại hoặc bật Fragment cho DNS"
+    },
+    "ENGINE_SELFTEST_FAILED": {
+      "message": "DNS cục bộ không khởi động được",
+      "action": "Thử lại; xem nhật ký nếu lỗi lặp lại"
+    },
+    "SET_DNS_FAILED": {
+      "message": "không đặt được DNS cho {{adapter}}",
+      "action": "Chọn card mạng khác trong Cài đặt"
+    },
+    "VERIFY_LEAK": {
+      "message": "truy vấn DNS không đi qua VinPN (VPN hoặc phần mềm khác đang chiếm DNS)",
+      "action": "Tắt VPN/công cụ DNS khác rồi thử lại"
+    },
+    "RESTORE_FAILED": {
+      "message": "không trả được DNS về như cũ cho {{adapter}}",
+      "action": "Bấm Khôi phục DNS ngay"
+    },
+    "DPI_START_FAILED": {
+      "message": "Engine vượt DPI không chạy được",
+      "action": "Thử preset khác"
+    },
+    "DPI_BLOCKED_BY_AV": {
+      "message": "Engine vượt DPI bị phần mềm diệt virus chặn",
+      "action": "Thêm thư mục VinPN vào danh sách loại trừ của antivirus (WinDivert hay bị báo nhầm)"
+    },
+    "DPI_HASH_MISMATCH": {
+      "message": "file engine vượt DPI đã bị thay đổi, VinPN từ chối chạy",
+      "action": "Cài lại VinPN"
+    },
+    "SERVERLIST_BAD_SIGNATURE": {
+      "message": "danh sách máy chủ tải về có chữ ký sai và đã bị bỏ qua",
+      "action": ""
+    },
+    "UPDATE_CHECK_FAILED": {
+      "message": "không kiểm tra được bản mới",
+      "action": ""
+    },
+    "AUTOTUNE_NO_PRESET": {
+      "message": "không tìm được cấu hình vượt DPI phù hợp",
+      "action": "Thử Mode 1–6 hoặc tham số tự nhập ở giao diện Đầy đủ"
+    },
+    "INTERNAL": {
+      "message": "lỗi nội bộ ở bước {{step}}",
+      "action": "Thử lại; xem nhật ký"
+    },
+    "SETTINGS_RESET": {
+      "message": "file cài đặt bị hỏng nên đã dùng cài đặt mặc định",
+      "action": ""
+    },
+    "STATE_RESET": {
+      "message": "file trạng thái bị hỏng; các card mạng đang trỏ về VinPN đã được đưa về DHCP",
+      "action": "Kiểm tra lại DNS của card mạng nếu trước đó bạn đặt DNS tĩnh"
+    },
+    "NOT_CONNECTED": {
+      "message": "cần kết nối trước khi tự dò vượt DPI",
+      "action": "Bấm Connect rồi thử lại"
+    },
+    "PROXY_PORT_BUSY": {
+      "message": "cổng {{port}} đang bị {{name}} (PID {{pid}}) chiếm",
+      "action": "Đổi cổng proxy hoặc đóng chương trình đó"
+    },
+    "PROXY_SELFTEST_FAILED": {
+      "message": "proxy không tự kiểm tra được",
+      "action": "Thử lại; xem nhật ký nếu lặp lại"
+    },
+    "PROXY_FIREWALL": {
+      "message": "không tạo được luật tường lửa để chia sẻ LAN",
+      "action": "Thử lại hoặc tắt chia sẻ LAN"
+    },
+    "SYSPROXY_EXISTING": {
+      "message": "máy đang dùng proxy khác ({{server}}{{pac}}). Ghi đè? VinPN sẽ trả lại như cũ khi ngắt.",
+      "action": "",
+      "override": "ghi đè",
+      "keep": "không dùng system proxy"
+    },
+    "SYSPROXY_FAILED": {
+      "message": "không đặt được system proxy của Windows",
+      "action": "Thử lại hoặc tắt \"dùng cho máy này\""
+    },
+    "SYSPROXY_TAKEN_OVER": {
+      "message": "một ứng dụng khác đã đổi system proxy; VinPN sẽ không giành lại và không khôi phục đè lên",
+      "action": ""
+    },
+    "SYSPROXY_RESTORE_FAILED": {
+      "message": "không khôi phục được system proxy của Windows",
+      "action": "Mở Cài đặt Windows → Proxy và tắt proxy thủ công",
+      "button": "khôi phục system proxy"
+    },
+    "RULES_PARSE": {
+      "message": "rules không hợp lệ ở dòng {{line}}",
+      "action": ""
+    },
+    "LIST_FETCH_FAILED": {
+      "message": "không tải được danh sách {{id}}, đang dùng bản cũ",
+      "action": ""
+    },
+    "LIST_UNSUPPORTED_FORMAT": {
+      "message": "danh sách {{id}} có định dạng không hỗ trợ",
+      "action": "Chọn định dạng bằng tay hoặc dùng bản text"
+    },
+    "LIST_TOO_LARGE": {
+      "message": "danh sách {{id}} quá lớn (giới hạn 50 MB / 2 triệu mục), đã tắt",
+      "action": ""
+    },
+    "UPSTREAM_PROXY_FAILED": {
+      "message": "upstream proxy {{id}} không dùng được",
+      "action": "Kiểm tra địa chỉ hoặc nhập lại mật khẩu"
+    },
+    "NO_PINNED_SERVERS": {
+      "message": "chưa có máy chủ ghim nào dùng được ({{checked}} đã kiểm tra)",
+      "action": "Ghim thêm máy chủ hoặc tắt \"chỉ dùng máy chủ đã ghim\""
+    },
+    "DPI_BLACKLIST_EMPTY": {
+      "message": "danh sách đen đang trống",
+      "action": "Thêm ít nhất một domain, hoặc chọn \"mọi kết nối\""
+    },
+    "DPI_FALLBACK": {
+      "message": "zapret2 bị chặn, đang dùng tạm GoodbyeDPI",
+      "action": "Thêm thư mục zapret2 vào loại trừ của Defender"
+    },
+    "AUTOTUNE_ENGINE_SWITCHED": {
+      "message": "Tự dò đã chuyển sang GoodbyeDPI",
+      "action": "zapret2 không chạy được trên máy này"
+    },
+    "STRATEGY_LIST_INVALID": {
+      "message": "Danh sách chiến lược tải về không hợp lệ",
+      "action": "VinPN giữ danh sách đang dùng"
+    },
+    "DPI_CUSTOM_REJECTED": {
+      "message": "Tham số tự nhập không được phép",
+      "action": "Bỏ tham số {{arg}}"
+    },
+    "DNSSERVER_PORT_IN_USE": {
+      "message": "Cổng {{port}} đang bị chiếm ({{addrs}})",
+      "action": "Đổi cổng DoH hoặc đóng chương trình đang giữ cổng"
+    },
+    "DNSSERVER_FIREWALL": {
+      "message": "không tạo được luật firewall cho DNS server: {{detail}}",
+      "action": "Thử lại hoặc tắt chia sẻ cho LAN"
+    },
+    "DNSSERVER_SELFTEST_FAILED": {
+      "message": "DNS server không tự kiểm tra được",
+      "action": "Thử lại hoặc mở nhật ký"
+    },
+    "CERT_INSTALL_FAILED": {
+      "message": "không cài được chứng chỉ gốc vào Windows",
+      "action": "Thử lại hoặc mở nhật ký"
+    },
+    "CERT_REMOVE_FAILED": {
+      "message": "chưa gỡ được chứng chỉ VinPN khỏi Windows",
+      "action": "Bấm \"thử gỡ lại\", hoặc gỡ tay bằng certlm.msc (Trusted Root Certification Authorities)"
+    },
+    "CERT_KEY_UNREADABLE": {
+      "message": "không đọc được khoá CA LAN (máy khác hoặc file hỏng)",
+      "action": "Tạo lại CA LAN"
+    },
+    "LIST_SIGNATURE_INVALID": {
+      "message": "chữ ký danh sách không hợp lệ, vẫn dùng bản cũ",
+      "action": "Thử cập nhật lại sau"
+    },
+    "SETUP_PAGE_FAILED": {
+      "message": "không mở được trang cài đặt cho điện thoại",
+      "action": "Dùng \"lưu file…\""
+    },
+    "FAKESNI_NEEDS_PROXY": {
+      "message": "Fake SNI cần bật proxy",
+      "action": "Bật proxy"
+    },
+    "FAKESNI_TOO_MANY": {
+      "message": "có {{count}} tên miền sni=, tối đa 1000",
+      "action": "Tắt bớt nhóm preset hoặc danh sách"
+    },
+    "FAKESNI_SELFTEST_FAILED": {
+      "message": "Windows chưa tin chứng chỉ Fake SNI",
+      "action": "Thử lại hoặc mở nhật ký"
+    },
+    "FAKESNI_NOT_ACKED": {
+      "message": "hãy đọc và xác nhận cảnh báo Fake SNI trước",
+      "action": "Mở trang Fake SNI"
+    },
+    "TOOL_BUSY": {
+      "message": "Công cụ này đang chạy",
+      "action": "Đợi xong hoặc bấm Huỷ"
+    },
+    "LOOKUP_NOT_CONNECTED": {
+      "message": "VinPN chưa kết nối, không tra qua VinPN được",
+      "action": "Bấm Kết nối, hoặc bỏ chọn nguồn VinPN"
+    },
+    "LOOKUP_BAD_NAME": {
+      "message": "Tên miền hoặc IP không hợp lệ",
+      "action": "Sửa ô tên miền"
+    },
+    "SCAN_TOO_MANY": {
+      "message": "Quá nhiều máy chủ cho một lượt quét",
+      "action": "Tăng \"số server tối đa mỗi lượt quét\" hoặc dán ít dòng hơn"
+    },
+    "CFSCAN_NO_NETWORK": {
+      "message": "Không kết nối được tới IP Cloudflare nào",
+      "action": "Kiểm tra mạng; tắt VPN hoặc firewall khác rồi thử lại"
+    },
+    "CFSCAN_HOST_INVALID": {
+      "message": "Host kiểm tra không phải tên miền hợp lệ",
+      "action": "Khôi phục mặc định"
+    },
+    "STAMP_INVALID": {
+      "message": "Stamp không hợp lệ",
+      "action": "Sửa trường được nêu"
+    },
+    "IMPORT_INVALID": {
+      "message": "File sao lưu không dùng được",
+      "action": "Chọn file khác"
+    },
+    "IMPORT_WHILE_CONNECTED": {
+      "message": "Chỉ nhập được khi đã ngắt kết nối",
+      "action": "Bấm Ngắt kết nối rồi nhập lại"
+    },
+    "IMPORT_EXPIRED": {
+      "message": "Bản xem trước đã hết hạn",
+      "action": "Chọn lại file"
+    },
+    "IMPORT_WRITE_FAILED": {
+      "message": "Không ghi được cài đặt; mọi thứ đã được khôi phục như cũ",
+      "action": "Thử lại hoặc mở nhật ký"
+    },
+    "EXPORT_WRITE_FAILED": {
+      "message": "Không ghi được file xuất",
+      "action": "Chọn thư mục khác"
+    }
+  },
+  "tray": {
+    "connect": "Kết nối",
+    "disconnect": "Ngắt kết nối"
+  },
+  "side": {
+    "connect": "⏻ KẾT NỐI",
+    "disconnect": "⏻ NGẮT KẾT NỐI",
+    "cancel": "■ HUỶ",
+    "summary": "{{latency}} ms · {{count}} máy chủ"
+  },
+  "proxy": {
+    "title": "PROXY",
+    "enabled": "bật proxy",
+    "systemProxy": "dùng cho máy này",
+    "shareLan": "chia sẻ LAN",
+    "port": "cổng",
+    "portInvalid": "cổng phải từ 1024 đến 65535 (và khác 53)",
+    "note": "proxy chạy cùng nút Connect và luôn phân giải tên miền qua DNS mã hoá của VinPN",
+    "lan": {
+      "title": "chia sẻ cho thiết bị khác",
+      "public": "Mạng đang là Public, thiết bị khác không vào được. Đổi sang Private trong Cài đặt Windows để chia sẻ.",
+      "none": "không tìm thấy địa chỉ LAN",
+      "qr": "mã QR cho {{addr}}",
+      "howto": "Trên điện thoại: Wi-Fi → mạng này → Proxy → Thủ công → nhập địa chỉ và cổng ở trên (HTTP)."
+    },
+    "fragment": {
+      "title": "fragment web",
+      "mode": "chế độ",
+      "modes": {
+        "auto": "tự động khi bị chặn",
+        "always": "luôn bật",
+        "never": "tắt"
+      },
+      "method": "kiểu cắt",
+      "methods": {
+        "tcp": "TCP",
+        "record": "TLS record",
+        "both": "kết hợp"
+      },
+      "autoTimeout": "chờ server (ms)",
+      "cache": "domain đã ghi nhớ (mạng này)",
+      "cacheEmpty": "chưa có domain nào",
+      "clearAll": "xoá hết",
+      "forget": "xoá {{host}}"
+    },
+    "upstreams": {
+      "title": "upstream proxy",
+      "add": "+ thêm",
+      "empty": "chưa có upstream proxy",
+      "id": "mã",
+      "type": "loại",
+      "addr": "địa chỉ",
+      "user": "người dùng",
+      "password": "mật khẩu",
+      "test": "kiểm tra",
+      "testFor": "kiểm tra {{id}}",
+      "testOk": "kết nối được ✓",
+      "edit": "sửa",
+      "deleteFor": "xoá {{id}}"
+    },
+    "stats": {
+      "title": "thống kê",
+      "open": "{{count}} kết nối",
+      "lan": "{{count}} thiết bị LAN",
+      "direct": "thẳng",
+      "fragmented": "fragment",
+      "upstream": "upstream",
+      "blocked": "chặn",
+      "blockedEvenFragmented": "bị chặn dù đã fragment"
+    },
+    "hint": {
+      "goodbyedpi": "{{count}} kết nối bị chặn kể cả khi fragment — thử bật vượt DPI ở trang Vượt DPI"
+    }
+  },
+  "rules": {
+    "title": "RULES",
+    "tabTable": "bảng",
+    "tabText": "text",
+    "textLabel": "rules text",
+    "lineError": "dòng {{line}}: {{msg}}",
+    "syntax": "cú pháp: <mẫu> <hành động…> · mẫu: domain, =domain, *.domain, ~keyword, /regexp/, CIDR · hành động: block, allow, ip=, fragment=auto|on|off, upstream=<id> · # chú thích · #! rule tắt",
+    "enableFor": "bật {{pattern}}",
+    "up": "lên {{pattern}}",
+    "down": "xuống {{pattern}}",
+    "delete": "xoá {{pattern}}",
+    "empty": "chưa có rule nào",
+    "pattern": "mẫu",
+    "actionLabel": "hành động",
+    "add": "+ thêm rule",
+    "actions": {
+      "block": "chặn",
+      "allow": "cho phép",
+      "fragment=on": "fragment: bật",
+      "fragment=off": "fragment: tắt",
+      "ip": "DNS giả (ip)",
+      "upstream": "upstream proxy"
+    },
+    "action": {
+      "block": "chặn",
+      "allow": "cho phép",
+      "ip": "DNS giả → {{ips}}",
+      "fragment": "fragment: {{mode}}",
+      "upstream": "upstream: {{id}}",
+      "sni": "sni={{sni}}",
+      "connect": "connect={{host}}"
+    },
+    "frag": {
+      "auto": "tự động",
+      "on": "bật",
+      "off": "tắt"
+    },
+    "explain": {
+      "title": "thử tên miền",
+      "input": "thử tên miền",
+      "go": "thử",
+      "none": "không rule hay danh sách nào khớp — đi thẳng",
+      "direct": "đi thẳng",
+      "rule": "rule số {{n}}",
+      "list": "danh sách {{name}}, dòng {{line}}",
+      "fakesni": "sẽ giải mã bằng Fake SNI (sni={{sni}}, connect={{connect}})",
+      "sniIgnored": "danh sách chưa được tin cho Fake SNI: bỏ qua sni= và connect="
+    },
+    "lists": {
+      "title": "danh sách",
+      "quick": "thêm nhanh",
+      "refreshAll": "⟳ cập nhật tất cả",
+      "refreshFor": "cập nhật {{name}}",
+      "skipped": "{{count}} dòng bỏ qua",
+      "empty": "chưa có danh sách nào",
+      "link": "link danh sách",
+      "add": "+ thêm danh sách",
+      "addItem": "thêm {{name}}",
+      "addShort": "+ thêm",
+      "formats": "hỗ trợ: hosts, domain, AdBlock/AdGuard, dnsmasq, Unbound, RPZ, Clash/Surge, v2ray, sing-box (JSON), CIDR · link GitHub tự chuyển sang raw",
+      "actions": {
+        "block": "chặn",
+        "allow": "cho phép",
+        "fragment=on": "fragment: bật",
+        "fromFile": "theo file (hosts/dnsmasq)"
+      },
+      "all": "tất cả",
+      "search": "tìm danh sách",
+      "added": "đã thêm",
+      "trustFor": "tin cho Fake SNI: {{name}}",
+      "trustConfirm": "Tin danh sách này cho Fake SNI? Nó sẽ quyết định SNI giả và IP kết nối cho {{count}} tên miền.",
+      "signed": "đã ký"
+    },
+    "blockMode": "chặn ở DNS trả về",
+    "blockModes": {
+      "zero": "0.0.0.0 / ::",
+      "nxdomain": "NXDOMAIN"
+    },
+    "blockModeNote": "áp dụng từ lần kết nối tiếp theo"
+  },
+  "catalog": {
+    "categories": {
+      "ads": "quảng cáo / tracker",
+      "security": "bảo mật",
+      "adult": "người lớn",
+      "gambling": "cờ bạc",
+      "social": "mạng xã hội",
+      "telemetry": "telemetry thiết bị",
+      "vietnam": "Việt Nam",
+      "bypass": "vượt chặn",
+      "fakesni": "Fake SNI"
+    },
+    "items": {
+      "hagezi-light": "bảo vệ cơ bản: quảng cáo, tracker, đo lường, telemetry; nhỏ và an toàn",
+      "hagezi-normal": "bảo vệ toàn diện trước quảng cáo, theo dõi và phần mềm xấu",
+      "hagezi-pro": "bảo vệ mở rộng: thêm lừa đảo, mã độc; tác giả khuyên dùng",
+      "hagezi-pro-plus": "bảo vệ tối đa; có thể chặn nhầm vài trang",
+      "hagezi-ultimate": "chặn rất mạnh; đôi khi chặn nhầm",
+      "oisd-small": "chặn mà không làm hỏng trang; bản nhỏ",
+      "oisd-big": "chặn mà không làm hỏng trang; bản đầy đủ",
+      "stevenblack-unified": "file hosts tổng hợp kinh điển: quảng cáo và mã độc",
+      "adguard-dns": "bộ lọc DNS của AdGuard (cú pháp AdBlock)",
+      "adaway": "chặn quảng cáo, thiên về ứng dụng di động",
+      "1hosts-lite": "danh sách quảng cáo và theo dõi gọn nhẹ",
+      "hagezi-tif-mini": "domain mã độc, lừa đảo, scam, đào coin trái phép (bản gọn)",
+      "hagezi-fake": "shop giả, lừa đảo và trang chặt chém",
+      "urlhaus": "các host đang phát tán mã độc",
+      "phishing-army": "domain lừa đảo tổng hợp từ nhiều nguồn",
+      "hagezi-nsfw": "nội dung người lớn",
+      "stevenblack-porn": "nội dung người lớn (định dạng hosts)",
+      "hagezi-gambling-mini": "trang cờ bạc (bản gọn)",
+      "stevenblack-gambling": "trang cờ bạc (định dạng hosts)",
+      "stevenblack-social": "mạng xã hội (Facebook, Instagram, TikTok, X…), ví dụ để phụ huynh kiểm soát",
+      "hagezi-windows": "theo dõi và telemetry của Windows và Office",
+      "hagezi-tiktok": "theo dõi của TikTok (ứng dụng vẫn dùng được)",
+      "hagezi-samsung": "theo dõi trên thiết bị Samsung",
+      "hagezi-apple": "theo dõi trên thiết bị Apple",
+      "hostsvn": "quảng cáo và tracker hay gặp trên các trang Việt Nam",
+      "v2fly-discord": "domain của Discord: fragment qua proxy",
+      "v2fly-twitter": "domain của X (Twitter): fragment qua proxy",
+      "v2fly-facebook": "domain của Facebook: fragment qua proxy",
+      "v2fly-youtube": "domain của YouTube: fragment qua proxy",
+      "v2fly-reddit": "domain của Reddit: fragment qua proxy",
+      "fakesni-google": "Domain fronting qua www.google.com cho YouTube và dịch vụ Google. Có chữ ký của VinPN."
+    }
+  },
+  "dnsserver": {
+    "disconnectConfirm": "{{count}} thiết bị trong mạng đang dùng DNS của máy này và sẽ mất mạng. Vẫn ngắt kết nối?",
+    "title": "DNS server",
+    "enabled": "bật DoH cục bộ",
+    "shareLan": "chia sẻ cho LAN",
+    "dohPort": "cổng DoH",
+    "portInvalid": "cổng DoH phải khác 53, 8053 và cổng proxy, trong khoảng 1–65535",
+    "listening": "đang nghe",
+    "skipped": "bỏ qua {{addr}}: {{why}}",
+    "note": "DoH cục bộ cho trình duyệt trên máy này. Chia sẻ cho LAN mở thêm DoH và DNS cổng 53 trên IP LAN (chỉ mạng Private).",
+    "stats": "{{queries}} truy vấn · {{clients}} thiết bị trong 10 phút",
+    "devices": {
+      "title": "dùng cho thiết bị khác",
+      "dnsIp": "IP DNS",
+      "dnsIpHint": "Router, TV, Android, Steam Deck: đặt DNS là IP này cho riêng Wi-Fi nhà. Không cần chứng chỉ.",
+      "doh": "URL DoH",
+      "fingerprint": "vân tay CA LAN",
+      "ssid": "tên Wi-Fi nhà",
+      "openSetup": "mở trang cài đặt cho điện thoại",
+      "setupNeedsShare": "Cần kết nối và bật chia sẻ LAN để mở trang cài đặt.",
+      "closeSetup": "đóng trang cài đặt",
+      "setupQr": "mã QR cho {{url}}",
+      "remaining": "tự đóng sau {{time}}",
+      "saveFiles": "lưu file…",
+      "notShared": "bật \"chia sẻ cho LAN\" và kết nối để thiết bị khác dùng được",
+      "ssidWarning": "Chưa có tên Wi-Fi nhà: chọn hoặc nhập ở đây (đúng như trên điện thoại). Nếu để trống, người dùng iPhone phải tự nhập tên Wi-Fi trên trang cài đặt."
+    },
+    "ca": {
+      "title": "CA LAN",
+      "none": "chưa có CA LAN (tạo khi DNS server chạy lần đầu)",
+      "reset": "tạo lại CA LAN",
+      "remove": "gỡ CA LAN",
+      "confirmReset": "Tạo CA LAN mới? Các thiết bị đã cài CA cũ phải cài lại.",
+      "confirmRemove": "Gỡ CA LAN khỏi máy này? DNS server sẽ bị tắt."
+    }
+  },
+  "fakesni": {
+    "title": "Fake SNI",
+    "warning": {
+      "title": "Đọc trước khi bật Fake SNI",
+      "p1": "Fake SNI giải mã HTTPS của các tên miền có rule sni=, rồi mở kết nối mới tới máy chủ với một tên miền giả để nhà mạng không thấy trang bạn vào.",
+      "p2": "Trong lúc đó VinPN thấy nội dung đã giải mã của các tên miền này. Nội dung chỉ nằm trong RAM, không được lưu hay ghi log.",
+      "p3": "Ứng dụng ghim chứng chỉ (một số app ngân hàng, app native) sẽ lỗi với các tên miền này.",
+      "p4": "Không dùng cho ngân hàng hay tài khoản quan trọng.",
+      "p5": "Chứng chỉ gốc VinPN cài vào Windows chỉ ký được cho đúng các tên miền trong rule và bị gỡ khi ngắt kết nối.",
+      "p6": "Chỉ áp dụng cho trình duyệt trên máy này khi đi qua proxy của VinPN.",
+      "understood": "tôi đã hiểu",
+      "continue": "tiếp tục"
+    },
+    "enabled": "bật Fake SNI",
+    "needsProxy": "Fake SNI cần bật proxy",
+    "enableProxy": "bật proxy",
+    "presets": "nhóm preset",
+    "rules": "rule sni= viết tay",
+    "noRules": "chưa có rule sni= viết tay",
+    "ca": "CA phiên",
+    "caInfo": "{{domains}} tên miền · hết hạn {{date}}",
+    "caNone": "chưa có CA phiên (Fake SNI chưa chạy)",
+    "stats": {
+      "fakesni": "đã giải mã: {{n}}",
+      "fallback": "quay về fragment: {{n}}",
+      "clientRejected": "trình duyệt từ chối: {{n}}",
+      "verifyFailed": "chứng chỉ máy chủ sai: {{n}}"
+    },
+    "firefox": "Firefox: nếu báo lỗi chứng chỉ, bật security.enterprise_roots.enabled trong about:config.",
+    "banner": "Fake SNI đang bật — VinPN đang giải mã HTTPS của {{count}} tên miền",
+    "view": "xem",
+    "off": "tắt Fake SNI"
+  },
+  "tools": {
+    "title": "Công cụ",
+    "copy": "sao chép",
+    "tab": {
+      "logs": "nhật ký",
+      "lookup": "lookup",
+      "scanner": "scanner",
+      "cfscan": "ip cloudflare",
+      "stamp": "stamp"
+    },
+    "lookup": {
+      "name": "tên miền",
+      "placeholder": "ví dụ youtube.com, hoặc một IP khi tra PTR",
+      "type": "loại bản ghi",
+      "run": "tra",
+      "isp": "DNS nhà mạng {{ip}}",
+      "unencrypted": "không mã hoá",
+      "addSource": "thêm nguồn",
+      "addSourceHint": "URL/stamp của server, hoặc IP của DNS thường",
+      "add": "thêm",
+      "ispNote": "Nguồn DNS nhà mạng gửi truy vấn không mã hoá, nhà mạng thấy được tên miền đang tra. Chỉ dùng để so sánh khi chẩn đoán.",
+      "details": "chi tiết",
+      "col": {
+        "source": "nguồn",
+        "status": "trạng thái",
+        "latency": "độ trễ",
+        "answer": "trả lời"
+      },
+      "per": {
+        "poisoned": "đầu độc",
+        "differs": "khác",
+        "match": "khớp",
+        "failed": "lỗi"
+      },
+      "fail": {
+        "timeout": "hết thời gian",
+        "bootstrap": "không phân giải được server",
+        "error": "lỗi"
+      },
+      "verdict": {
+        "poisoned": {
+          "title": "Bị đầu độc DNS",
+          "body": "Ít nhất một nguồn trả về IP nội bộ hoặc báo tên miền không tồn tại trong khi nguồn khác có địa chỉ. Đó là dấu hiệu nhà mạng chặn bằng DNS."
+        },
+        "differs": {
+          "title": "Kết quả khác nhau",
+          "body": "Các nguồn trả về địa chỉ khác nhau. CDN có thể trả IP khác nhau theo vị trí, nên chưa chắc là bị chặn."
+        },
+        "match": {
+          "title": "Kết quả khớp nhau",
+          "body": "Các nguồn trả về cùng địa chỉ (hoặc cùng một CDN)."
+        },
+        "failed": {
+          "title": "Không nguồn nào trả lời",
+          "body": "Mọi nguồn đều lỗi hoặc hết thời gian. Kiểm tra kết nối mạng."
+        }
+      },
+      "running": "đang tra…",
+      "busy": "Đang tra {{name}} qua {{count}} nguồn… (tối đa 5 giây mỗi nguồn)"
+    },
+    "stamp": {
+      "decodeTitle": "Giải mã",
+      "buildTitle": "Tạo stamp",
+      "input": "stamp cần giải mã",
+      "decode": "giải mã",
+      "add": "thêm vào danh sách server",
+      "added": "Đã thêm {{count}} máy chủ",
+      "notUsable": "VinPN không dùng loại này",
+      "ipOptional": "IP (tuỳ chọn)",
+      "fromUrl": "điền từ URL",
+      "build": "tạo stamp",
+      "f": {
+        "proto": "giao thức",
+        "addr": "địa chỉ IP",
+        "host": "host",
+        "path": "đường dẫn",
+        "providerName": "tên provider",
+        "publicKey": "khoá công khai",
+        "hashes": "hash chứng chỉ"
+      }
+    },
+    "scan": "quét",
+    "cancel": "huỷ",
+    "options": "tuỳ chọn",
+    "select": "chọn {{what}}",
+    "tri": {
+      "yes": "có",
+      "no": "không",
+      "partial": "một phần",
+      "unknown": "?"
+    },
+    "scanner": {
+      "fromList": "danh sách có sẵn",
+      "fromPaste": "dán danh sách",
+      "pinnedOnly": "chỉ server đã ghim",
+      "pasteLabel": "server cần quét",
+      "badLines": "Bỏ qua các dòng không hợp lệ: {{lines}}",
+      "onlyDNSSEC": "chỉ server có DNSSEC",
+      "onlyAds": "chỉ server lọc quảng cáo",
+      "pinSelected": "ghim mục đã chọn",
+      "exportCsv": "xuất CSV",
+      "col": {
+        "server": "server",
+        "median": "trung vị",
+        "loss": "mất gói",
+        "ads": "lọc QC",
+        "poison": "đầu độc"
+      },
+      "unreachable": "không dùng được ({{reason}})",
+      "add": "thêm",
+      "added": "Đã thêm vào danh sách server",
+      "useOnly": "chỉ dùng",
+      "rounds": "số lượt đo",
+      "workers": "số luồng",
+      "timeoutMs": "thời hạn mỗi truy vấn (ms)",
+      "matching": "{{count}} server khớp",
+      "willCap": "sẽ quét {{max}} server ưu tiên (đã ghim, chạy tốt lần trước, có sẵn trong app)",
+      "capped": "Đã quét {{max}} server ưu tiên, bỏ qua {{skipped}} server. Tăng \"số server tối đa mỗi lượt quét\" trong tuỳ chọn, hoặc lọc thêm (giao thức, thẻ).",
+      "maxServers": "số server tối đa mỗi lượt quét",
+      "maxServersNote": "50–2000. Quét càng nhiều server càng lâu: 500 server mất khoảng 1–2 phút, 2000 server khoảng 6–8 phút; một lượt quét dừng sau tối đa 10 phút."
+    },
+    "cfscan": {
+      "probePhase": "đã thử {{tried}} · dùng được {{ok}}",
+      "speedPhase": "đang đo tốc độ tải các IP tốt nhất…",
+      "direct": "Quét đi thẳng ra mạng, không qua proxy của VinPN; chỉ cổng 443, tối đa 200 kết nối mới mỗi giây.",
+      "scannedAt": "đã quét lúc {{time}}",
+      "createRule": "tạo rule",
+      "recheck": "kiểm tra lại",
+      "col": {
+        "latency": "độ trễ"
+      },
+      "note": {
+        "no_speed_endpoint": "Host kiểm tra không có /__down nên bỏ qua đo tốc độ."
+      },
+      "ruleNote": "Rule ip= chỉ có tác dụng với ứng dụng dùng DNS hoặc proxy của VinPN, và chỉ có tác dụng với domain thật sự nằm sau Cloudflare.",
+      "tooManyIps": "Chọn tối đa {{max}} IP cho một rule.",
+      "domains": "domain",
+      "suggest": "gợi ý:",
+      "create": "tạo",
+      "ruleCreated": "Đã tạo rule ip= trong trang Rules.",
+      "host": "host kiểm tra",
+      "restoreDefault": "khôi phục mặc định",
+      "maxIps": "số IP tối đa",
+      "want": "dừng khi đủ (0 = quét hết)",
+      "concurrency": "số kết nối cùng lúc",
+      "timeoutMs": "thời hạn mỗi IP (ms)",
+      "speedTest": "đo tốc độ tải",
+      "rechecking": "đang kiểm tra…"
+    }
+  }
+}

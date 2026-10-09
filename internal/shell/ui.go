@@ -1,0 +1,330 @@
+package shell
+
+import (
+	"context"
+	"image/color"
+	"log/slog"
+	"net/netip"
+	"sync"
+	"time"
+
+	"github.com/AdguardTeam/dnsproxy/upstream"
+	"github.com/sickyturtlez/vinpn/internal/app"
+	"github.com/sickyturtlez/vinpn/internal/brand"
+	"github.com/sickyturtlez/vinpn/internal/icon"
+	"github.com/sickyturtlez/vinpn/internal/model"
+	"github.com/sickyturtlez/vinpn/internal/store"
+	"github.com/sickyturtlez/vinpn/internal/updater"
+	"github.com/sickyturtlez/vinpn/internal/winutil"
+	"github.com/wailsapp/wails/v3/pkg/application"
+	"github.com/wailsapp/wails/v3/pkg/events"
+)
+
+type (
+	upstreamT = upstream.Upstream
+	netipAddr = netip.Addr
+)
+
+// builderFunc adapts a function to app.Builder.
+type builderFunc func(model.Server) (upstream.Upstream, error)
+
+func (f builderFunc) Build(s model.Server) (upstream.Upstream, error) { return f(s) }
+
+// emitter forwards events to Wails and lets the shell watch state changes.
+type emitter struct {
+	app     *application.App
+	onState func(app.Snapshot)
+}
+
+func (e *emitter) Emit(name string, data any) {
+	if e.app != nil {
+		e.app.Event.Emit(name, data)
+	}
+	if name == app.EventState && e.onState != nil {
+		if s, ok := data.(app.Snapshot); ok {
+			e.onState(s)
+		}
+	}
+}
+
+const (
+	simpleW, simpleH   = 380, 580
+	minFullW, minFullH = 900, 600
+)
+
+var statusColour = map[app.Status]color.RGBA{
+	app.StatusDisconnected:  {0x3a, 0x4a, 0x44, 0xff},
+	app.StatusConnecting:    {0x00, 0xd0, 0xff, 0xff},
+	app.StatusDisconnecting: {0x00, 0xd0, 0xff, 0xff},
+	app.StatusProtected:     {0x00, 0xff, 0xa3, 0xff},
+	app.StatusDegraded:      {0xff, 0xb0, 0x20, 0xff},
+	app.StatusError:         {0xff, 0x4d, 0x6d, 0xff},
+}
+
+type ui struct {
+	app  *application.App
+	orch *app.Orchestrator
+	box  *app.SettingsBox
+	log  *slog.Logger
+
+	mu sync.Mutex
+	// win is the open window, nil while VinPN sits in the tray. Only
+	// touched on the main thread (or before the app runs).
+	win         *application.WebviewWindow
+	tray        *application.SystemTray
+	connItem    *application.MenuItem
+	dpiItem     *application.MenuItem
+	proxyItem   *application.MenuItem
+	checkItem   *application.MenuItem
+	checker     *updateChecker
+	svc         *app.Service
+	openItem    *application.MenuItem
+	quitItem    *application.MenuItem
+	updItem     *application.MenuItem
+	lastState   app.Status
+	lastFakeSNI bool
+	updTag      string // newer release, "" if none
+	// lanDNSClients counts LAN devices that used the DNS server in the
+	// last 10 minutes (0 while it is off); nil means none.
+	lanDNSClients func() int
+	updURL        string
+}
+
+// createWindow opens the main window. Closing it to the tray destroys it
+// (and its WebView2 processes, ~150 MB) rather than hiding it; show()
+// creates a new one.
+func (u *ui) createWindow() {
+	// The initial size must match the saved mode: resizing a window that
+	// has not been shown yet is ignored.
+	s := u.box.Get()
+	opts := application.WebviewWindowOptions{
+		Name:                "main",
+		Title:               brand.AppName,
+		Width:               simpleW,
+		Height:              simpleH,
+		Frameless:           true,
+		DisableResize:       true,
+		MaximiseButtonState: application.ButtonDisabled,
+		BackgroundColour:    application.NewRGB(5, 7, 10),
+		URL:                 "/",
+	}
+	if s.Mode == store.ModeFull {
+		opts.Width, opts.Height = max(s.FullWindow.Width, minFullW), max(s.FullWindow.Height, minFullH)
+		opts.MinWidth, opts.MinHeight = minFullW, minFullH
+		opts.DisableResize = false
+	}
+	w := u.app.Window.NewWithOptions(opts)
+	u.win = w
+	w.RegisterHook(events.Common.WindowClosing, func(*application.WindowEvent) {
+		if u.box.Get().CloseToTray {
+			if u.win == w {
+				u.win = nil // let it close; the tray stays
+			}
+			return
+		}
+		u.app.Quit()
+	})
+}
+
+// show brings the window up, creating it if it was closed to the tray.
+func (u *ui) show() {
+	application.InvokeSync(func() {
+		if u.win == nil {
+			u.createWindow()
+		}
+		u.win.Show()
+		u.win.Focus()
+	})
+}
+
+// setMode resizes the window while keeping its centre in place.
+func (u *ui) setMode(mode string) {
+	application.InvokeSync(func() { u.resize(mode) })
+}
+
+func (u *ui) resize(mode string) {
+	if u.win == nil {
+		return
+	}
+	x, y := u.win.Position()
+	w0, h0 := u.win.Size()
+	cx, cy := x+w0/2, y+h0/2
+	s := u.box.Get()
+	w, h := simpleW, simpleH
+	if mode == store.ModeFull {
+		w, h = max(s.FullWindow.Width, minFullW), max(s.FullWindow.Height, minFullH)
+		u.win.SetResizable(true)
+		u.win.SetMinSize(minFullW, minFullH)
+	} else {
+		if w0 >= minFullW { // remember the full-interface size
+			s.FullWindow.Width, s.FullWindow.Height = w0, h0
+			_ = u.box.Save(s)
+		}
+		u.win.SetMinSize(simpleW, simpleH)
+		u.win.SetResizable(false)
+	}
+	u.win.SetSize(w, h)
+	u.win.SetPosition(cx-w/2, cy-h/2)
+}
+
+func (u *ui) createTray() {
+	u.tray = u.app.SystemTray.New()
+	u.tray.SetIcon(icon.Ring(statusColour[app.StatusDisconnected], winutil.SmallIconSize()))
+	tt := trayText(u.box.Get().Language)
+	u.tray.SetTooltip(brand.AppName + " · " + tt.status[app.StatusDisconnected])
+	menu := application.NewMenu()
+	u.updItem = menu.Add("").SetHidden(true).OnClick(func(*application.Context) {
+		u.mu.Lock()
+		url := u.updURL
+		u.mu.Unlock()
+		// Belt: even though every producer sanitises, only an https://
+		// github.com link ever reaches the OS shell.
+		if link := updater.ReleasePageURL(url); link != "" {
+			_ = u.app.Browser.OpenURL(link)
+		}
+	})
+	u.connItem = menu.Add(tt.connect).OnClick(func(*application.Context) {
+		go func() {
+			if st := u.orch.Snapshot().Status; st == app.StatusProtected || st == app.StatusDegraded {
+				if !u.confirmDisconnect(tt) {
+					return
+				}
+				_ = u.orch.Disconnect(context.Background())
+			} else {
+				_ = u.orch.Connect(context.Background())
+			}
+		}()
+	})
+	u.dpiItem = menu.AddCheckbox(tt.dpi, u.box.Get().DPI.Enabled)
+	u.dpiItem.OnClick(func(c *application.Context) {
+		on := c.IsChecked()
+		go func() {
+			if err := u.orch.SetDPIEnabled(context.Background(), on); err != nil {
+				u.dpiItem.SetChecked(!on)
+			}
+		}()
+	})
+	u.proxyItem = menu.Add(tt.proxyLabel(u.box.Get().Proxy.Enabled)).OnClick(func(*application.Context) {
+		go func() {
+			if u.svc != nil {
+				_ = u.svc.SetProxyEnabled(!u.box.Get().Proxy.Enabled)
+			}
+			u.onLanguage()
+		}()
+	})
+	menu.AddSeparator()
+	u.checkItem = menu.Add(tt.checkUpdate).OnClick(func(*application.Context) { go u.checkUpdate() })
+	u.openItem = menu.Add(tt.open).OnClick(func(*application.Context) { u.show() })
+	menu.Add("VinPN " + brand.Version).SetEnabled(false)
+	menu.AddSeparator()
+	u.quitItem = menu.Add(tt.quit).OnClick(func(*application.Context) { u.app.Quit() })
+	u.tray.SetMenu(menu)
+	u.tray.OnClick(u.show)
+	u.tray.OnRightClick(u.tray.OpenMenu) // works around tray menu issue #6161
+}
+
+func (u *ui) onState(s app.Snapshot) {
+	u.mu.Lock()
+	changed := s.Status != u.lastState || s.FakeSNI.Active != u.lastFakeSNI
+	u.lastState = s.Status
+	u.lastFakeSNI = s.FakeSNI.Active
+	u.mu.Unlock()
+	if !changed || u.tray == nil {
+		return
+	}
+	u.tray.SetIcon(icon.Ring(statusColour[s.Status], winutil.SmallIconSize()))
+	u.relabel(s.Status)
+	u.dpiItem.SetChecked(s.DPI.Enabled)
+}
+
+// relabel applies the current language to the tray (also called when the
+// language setting changes).
+func (u *ui) relabel(status app.Status) {
+	if u.tray == nil {
+		return
+	}
+	tt := trayText(u.box.Get().Language)
+	u.mu.Lock()
+	tag := u.updTag
+	fakeSNI := u.lastFakeSNI
+	u.mu.Unlock()
+	if tag != "" {
+		u.updItem.SetLabel(tt.updateLabel(tag)).SetHidden(false)
+	}
+	u.tray.SetTooltip(tt.tooltip(status, tag, fakeSNI))
+	if status == app.StatusProtected || status == app.StatusDegraded {
+		u.connItem.SetLabel(tt.disconnect)
+	} else {
+		u.connItem.SetLabel(tt.connect)
+	}
+	u.dpiItem.SetLabel(tt.dpi)
+	u.proxyItem.SetLabel(tt.proxyLabel(u.box.Get().Proxy.Enabled))
+	u.checkItem.SetLabel(tt.checkUpdate)
+	u.openItem.SetLabel(tt.open)
+	u.quitItem.SetLabel(tt.quit)
+}
+
+// onLanguage re-labels the tray after a language change.
+func (u *ui) onLanguage() {
+	u.mu.Lock()
+	st := u.lastState
+	u.mu.Unlock()
+	if st == "" {
+		st = app.StatusDisconnected
+	}
+	u.relabel(st)
+}
+
+// onUpdate shows a newer release in the tray menu and tooltip.
+func (u *ui) onUpdate(tag, url string) {
+	u.mu.Lock()
+	u.updTag, u.updURL = tag, url
+	st := u.lastState
+	u.mu.Unlock()
+	if st == "" {
+		st = app.StatusDisconnected
+	}
+	u.relabel(st)
+}
+
+// checkUpdate is the tray's "Check for updates": a newer release shows up
+// through onUpdate (menu item + tooltip); otherwise the tooltip says so.
+func (u *ui) checkUpdate() {
+	if u.checker == nil || u.tray == nil {
+		return
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	r, err := u.checker.checkNow(ctx)
+	if err == nil && r.Newer {
+		return
+	}
+	tt := trayText(u.box.Get().Language)
+	msg := tt.upToDate + " (" + brand.Version + ")"
+	if err != nil {
+		msg = tt.checkFailed
+	}
+	u.tray.SetTooltip(brand.AppName + " · " + msg)
+	time.AfterFunc(10*time.Second, u.onLanguage) // back to the status tooltip
+}
+
+// confirmDisconnect asks before a tray disconnect while LAN devices use
+// this PC's DNS: they lose the internet with it. Shutdown and Quit do not
+// ask.
+func (u *ui) confirmDisconnect(tt trayStrings) bool {
+	if u.lanDNSClients == nil || u.app == nil {
+		return true
+	}
+	n := u.lanDNSClients()
+	if n == 0 {
+		return true
+	}
+	ok := false
+	d := u.app.Dialog.Question().SetTitle(brand.AppName).SetMessage(tt.disconnectAsk(n))
+	// Windows shows a system Yes/No box and matches callbacks by these
+	// labels; the buttons themselves are in the OS language.
+	d.AddButton("Yes").OnClick(func() { ok = true })
+	no := d.AddButton("No")
+	d.SetDefaultButton(no).SetCancelButton(no).Show()
+	return ok
+}

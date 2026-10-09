@@ -1,0 +1,156 @@
+.view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding-top: 4px;
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.status {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-shadow: var(--glow-accent);
+}
+.status[data-status="disconnected"] {
+  color: var(--dim);
+  text-shadow: none;
+}
+.status[data-status="connecting"],
+.status[data-status="disconnecting"] {
+  color: var(--sky);
+  text-shadow: var(--glow-sky);
+}
+.status[data-status="degraded"] {
+  color: var(--warn);
+  text-shadow: none;
+}
+.status[data-status="error"] {
+  color: var(--danger);
+  text-shadow: var(--glow-danger);
+}
+
+.cursor {
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.sub {
+  font-size: 11px;
+  color: var(--dim);
+  margin-top: -8px;
+  text-align: center;
+  padding: 0 16px;
+  min-height: 1em;
+}
+
+.bottom {
+  display: grid;
+  gap: 8px;
+  padding: 0 14px 14px;
+}
+
+.done {
+  color: var(--text-strong);
+}
+.done .mark {
+  color: var(--accent);
+}
+.mark {
+  white-space: pre;
+}
+.current {
+  color: var(--sky);
+}
+.todo {
+  color: var(--dim);
+  white-space: pre;
+}
+
+.link {
+  color: var(--sky);
+}
+
+.update {
+  justify-self: center;
+  padding: 4px 10px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.update:hover {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+/* Protection level: a segmented choice under the status line. */
+.levels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+}
+
+.levelRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+}
+
+.level {
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+.level + .level {
+  border-left: 1px solid var(--line);
+}
+
+.level:hover:not(:disabled) {
+  color: var(--accent);
+}
+
+.level[aria-checked="true"] {
+  background: rgba(143, 123, 255, 0.16);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.level:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.levelNote {
+  font-size: 11px;
+  color: var(--dim);
+  text-align: center;
+  max-width: 380px;
+  min-height: 2.8em; /* room for two lines, so the layout does not jump */
+}
+
+.levelError {
+  font-size: 11px;
+  color: var(--danger);
+  text-align: center;
+}
+

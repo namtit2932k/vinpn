@@ -1,0 +1,143 @@
+// Package updater checks for new VinPN releases and fetches signed
+// server lists.
+package updater
+
+import (
+	"context"
+	"crypto/ed25519"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"io"
+	"net/http"
+	"net/url"
+	"strings"
+	"time"
+
+	"github.com/sickyturtlez/vinpn/internal/servers"
+	"golang.org/x/mod/semver"
+)
+
+// Release is the latest published version.
+type Release struct {
+	Tag string `json:"tag"`
+	URL string `json:"url"`
+}
+
+// Latest reads tag_name and html_url from the GitHub releases API.
+func Latest(ctx context.Context, c *http.Client, apiURL string) (Release, error) {
+	b, err := get(ctx, c, apiURL, 1<<20)
+	if err != nil {
+		return Release{}, err
+	}
+	var v struct {
+		Tag string `json:"tag_name"`
+		URL string `json:"html_url"`
+	}
+	if err := json.Unmarshal(b, &v); err != nil {
+		return Release{}, err
+	}
+	return Release{Tag: v.Tag, URL: ReleasePageURL(v.URL)}, nil
+}
+
+// ReleasePageURL keeps only an https://github.com release link. The value
+// reaches the app from the network (the GitHub API) or from meta.json on
+// disk, and it ends up in a shell OpenURL call, so no other scheme or host
+// may pass through. Anything else returns "".
+func ReleasePageURL(u string) string {
+	p, err := url.Parse(u)
+	if err != nil || p.Scheme != "https" || p.User != nil ||
+		!strings.EqualFold(p.Hostname(), "github.com") {
+		return ""
+	}
+	return u
+}
+
+func canon(v string) string {
+	if !strings.HasPrefix(v, "v") {
+		v = "v" + v
+	}
+	return v
+}
+
+// Newer reports whether tag is a newer semver than current. Dev builds and
+// unparsable tags never report an update.
+func Newer(current, tag string) bool {
+	c, t := canon(current), canon(tag)
+	if !semver.IsValid(c) || !semver.IsValid(t) {
+		return false
+	}
+	return semver.Compare(t, c) > 0
+}
+
+// Due reports whether a daily job last run at last should run again.
+func Due(last, now time.Time) bool { return now.Sub(last) >= 24*time.Hour }
+
+func get(ctx context.Context, c *http.Client, url string, limit int64) ([]byte, error) {
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("User-Agent", "VinPN")
+	resp, err := c.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("updater: GET %s: HTTP %d", url, resp.StatusCode)
+	}
+	return io.ReadAll(io.LimitReader(resp.Body, limit))
+}
+
+// FetchSigned downloads a file and its ed25519 signature (servers.Sign
+// format) and verifies it.
+func FetchSigned(ctx context.Context, c *http.Client, url, sigURL string, pub ed25519.PublicKey) (raw, sig []byte, err error) {
+	if raw, err = get(ctx, c, url, 8<<20); err != nil {
+		return nil, nil, err
+	}
+	if sig, err = get(ctx, c, sigURL, 4096); err != nil {
+		return nil, nil, err
+	}
+	if err := servers.VerifySigned(raw, sig, pub); err != nil {
+		return nil, nil, err
+	}
+	return raw, sig, nil
+}
+
+// FetchServerList downloads a list and its ed25519 signature and verifies it.
+func FetchServerList(ctx context.Context, c *http.Client, url, sigURL string, pub ed25519.PublicKey) (servers.List, []byte, []byte, error) {
+	raw, sig, err := FetchSigned(ctx, c, url, sigURL, pub)
+	if err != nil {
+		return servers.List{}, nil, nil, err
+	}
+	l, err := servers.ParseList(raw)
+	if err != nil {
+		return servers.List{}, nil, nil, err
+	}
+	return l, raw, sig, nil
+}
+
+// FetchDNSCrypt tries each URL until one serves a list whose .minisig
+// verifies with minisignKey.
+func FetchDNSCrypt(ctx context.Context, c *http.Client, urls []string, minisignKey string) (md, sig []byte, err error) {
+	var errs []error
+	for _, u := range urls {
+		md, err := get(ctx, c, u, 16<<20)
+		if err != nil {
+			errs = append(errs, err)
+			continue
+		}
+		sig, err := get(ctx, c, u+".minisig", 4096)
+		if err != nil {
+			errs = append(errs, err)
+			continue
+		}
+		if err := servers.VerifyMinisign(md, sig, minisignKey); err != nil {
+			errs = append(errs, fmt.Errorf("%s: bad signature: %w", u, err))
+			continue
+		}
+		return md, sig, nil
+	}
+	return nil, nil, errors.Join(errs...)
+}

@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.ico binary
+*.png binary
+*.exe binary
+*.dll binary
+*.sys binary
+*.woff2 binary
+lists/servers.json.sig -text
+lists/dnscrypt/* -text

@@ -1,0 +1,16 @@
+{
+	"fixed": {
+		"file_version": "0.5.0",
+		"product_version": "0.5.0"
+	},
+	"info": {
+		"0409": {
+			"ProductVersion": "0.5.0",
+			"CompanyName": "VinPN",
+			"FileDescription": "VinPN - Secure DNS client",
+			"LegalCopyright": "© 2026 sickyturtlez. GPL-3.0-only.",
+			"ProductName": "VinPN",
+			"Comments": "https://github.com/sickyturtlez/vinpn"
+		}
+	}
+}

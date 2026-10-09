@@ -1,0 +1,38 @@
+// Package brand holds every name, URL and key that identifies VinPN.
+// Renaming the app means editing this file (and frontend/src/brand.ts).
+package brand
+
+const (
+	AppName          = "VinPN"
+	AppID            = "vinpn"
+	RepoOwner        = "sickyturtlez"
+	RepoName         = "vinpn"
+	RepoURL          = "https://github.com/" + RepoOwner + "/" + RepoName
+	ReleasesPage     = RepoURL + "/releases"
+	Author           = "sickyturtlez"
+	TaskAutostart    = "VinPN"
+	TaskRecovery     = "VinPN Recovery"
+	StateMutex       = `Local\VinPN-State`
+	SingleInstanceID = "io.github.sickyturtlez.vinpn"
+
+	ServerListURL    = "https://raw.githubusercontent.com/sickyturtlez/vinpn/main/lists/servers.json"
+	ServerListSigURL = ServerListURL + ".sig"
+	// The zapret2 strategy list is signed with the server-list key.
+	StrategyListURL    = "https://raw.githubusercontent.com/sickyturtlez/vinpn/main/lists/strategies.json"
+	StrategyListSigURL = StrategyListURL + ".sig"
+	ReleasesAPI        = "https://api.github.com/repos/sickyturtlez/vinpn/releases/latest"
+
+	DNSCryptMinisignKey = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3"
+)
+
+// DNSCryptListURLs are tried in order to fetch the public resolvers list.
+var DNSCryptListURLs = []string{
+	"https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md",
+	"https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md",
+}
+
+// Version is overridden at build time with -ldflags -X.
+var Version = "dev"
+
+// ServerListPublicKeyHex is the ed25519 public key that signs lists/servers.json.
+var ServerListPublicKeyHex = "e32c272e2a6ab33facb7e2d58c948c37a0c394724c63fa96cc9d870044bdd45c"

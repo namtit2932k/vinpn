@@ -1,0 +1,1010 @@
+{
+  "common": {
+    "cancel": "cancel",
+    "close": "close",
+    "save": "save",
+    "retry": "retry",
+    "dismiss": "dismiss",
+    "understood": "got it",
+    "confirm": "confirm",
+    "on": "on",
+    "off": "off",
+    "auto": "auto",
+    "ms": "{{value}} ms",
+    "openLogs": "open logs ›",
+    "details": "details"
+  },
+  "title": {
+    "minimise": "minimise",
+    "close": "close",
+    "language": "language"
+  },
+  "mode": {
+    "simple": "SIMPLE",
+    "full": "FULL"
+  },
+  "status": {
+    "disconnected": "UNPROTECTED",
+    "connecting": "CONNECTING",
+    "protected": "PROTECTED",
+    "degraded": "DEGRADED",
+    "disconnecting": "DISCONNECTING",
+    "error": "ERROR"
+  },
+  "step": {
+    "1": "checking the system",
+    "2": "choosing servers",
+    "3": "starting the engine",
+    "4": "saving original DNS",
+    "5": "arming safety net",
+    "6": "setting DNS",
+    "7": "verifying no leaks"
+  },
+  "simple": {
+    "tapToConnect": "tap to connect",
+    "tapToCancel": "tap again to cancel",
+    "encrypted": "every DNS query is encrypted",
+    "errorUnchanged": "Your DNS is unchanged, nothing was modified",
+    "server": "server",
+    "serverAuto": "auto",
+    "latency": "latency",
+    "dpi": "dpi bypass",
+    "uptime": "uptime",
+    "lastScan": "last scan",
+    "never": "never",
+    "blocked": "{{count}}/{{total}} test sites are still blocked",
+    "autotune": "AUTO-TUNE DPI BYPASS",
+    "autotuning": "tuning: {{preset}} ({{index}}/{{total}})",
+    "enableFragment": "ENABLE DNS FRAGMENT",
+    "proxy": "proxy",
+    "openServers": "open servers",
+    "disablePinnedOnly": "turn off pinned-only",
+    "dnsLan": "DNS for LAN",
+    "level": {
+      "label": "protection level",
+      "dns": "DNS only",
+      "dpi": "DNS + DPI bypass",
+      "max": "Maximum",
+      "custom": "Custom",
+      "hint": {
+        "dns": "Encrypted DNS only; the lightest, for ISPs that block with DNS alone.",
+        "dpi": "Adds DPI bypass for every app (recommended).",
+        "max": "Adds the proxy for this PC: browsers get fragmented automatically on blocked sites.",
+        "custom": "Your own combination from the Full interface."
+      },
+      "part": {
+        "dpi": "DPI bypass",
+        "proxy": "proxy",
+        "proxyNoSystem": "proxy (not for this PC)",
+        "none": "DNS only"
+      },
+      "editInFull": "change in the Full interface ›",
+      "fakeSniOff": "Fake SNI needs the proxy and will be turned off. Continue?",
+      "applying": "Applying “{{level}}”…"
+    },
+    "firstRun": {
+      "probe": "checking the test sites…",
+      "tune": "auto-tuning DPI bypass on the test sites {{index}}/{{total}}"
+    }
+  },
+  "nav": {
+    "overview": "overview",
+    "servers": "servers",
+    "dpi": "dpi bypass",
+    "tools": "tools",
+    "logs": "logs",
+    "settings": "settings",
+    "proxy": "proxy",
+    "rules": "rules",
+    "dnsserver": "dns server",
+    "fakesni": "fake sni",
+    "group": {
+      "basic": "basic",
+      "advanced": "advanced",
+      "diagnose": "diagnostics"
+    }
+  },
+  "overview": {
+    "latency60": "latency · 60 seconds",
+    "queries": "queries",
+    "inUse": "servers in use",
+    "route": "127.0.0.1 → {{servers}}",
+    "proxy": "proxy",
+    "dnsserver": "DNS server",
+    "dnsDevices": "{{count}} LAN devices",
+    "fakesni": "Fake SNI",
+    "fakesniDomains": "{{count}} domains"
+  },
+  "servers": {
+    "title": "SERVERS",
+    "ok": "{{count}} ok",
+    "scanAll": "⟳ scan all",
+    "scanning": "scanning {{done}}/{{total}} · cancel",
+    "add": "+ add",
+    "name": "name",
+    "protocol": "protocol",
+    "latency": "latency",
+    "state": "state",
+    "tags": "tags",
+    "inUse": "in use",
+    "pass": "ok",
+    "notChecked": "not checked",
+    "filter": "filter",
+    "onlyOk": "only ok",
+    "pinnedOnly": "use pinned servers only",
+    "scannedAt": "scanned at {{time}}",
+    "pin": "pin",
+    "remove": "remove",
+    "addTitle": "Add servers",
+    "addHint": "Paste URLs (https://, tls://, quic://) or sdns:// stamps, one server per line.",
+    "importFile": "import from file",
+    "added": "added {{count}} servers",
+    "rejected": "rejected: {{lines}}",
+    "search": "search servers",
+    "searchHint": "search by name, IP, address, tag…",
+    "clearSearch": "clear search",
+    "noMatch": "no servers match",
+    "matched": "{{count}} match",
+    "pinnedChip": "★ pinned ({{count}})",
+    "pinAllResults": "★ pin {{count}} results",
+    "unpinAll": "unpin all",
+    "pinsChanged": "pinned servers changed",
+    "reconnect": "reconnect to apply",
+    "pinnedPreferred": "pinned servers are preferred when connecting",
+    "pinnedOnlyNeedsPin": "ⓘ No servers pinned yet. Click ☆ or double-click a row to pin one; \"use pinned servers only\" needs at least one pinned server.",
+    "menu": {
+      "pin": "★ pin",
+      "unpin": "☆ unpin",
+      "useOnly": "⚡ use only this server",
+      "recheck": "⟳ check again",
+      "copyAddress": "⧉ copy address",
+      "copyIP": "⧉ copy IP",
+      "remove": "✕ remove",
+      "useOnlyConfirm": "Use only {{name}} and unpin {{count}} other servers?"
+    }
+  },
+  "dpi": {
+    "title": "DPI BYPASS",
+    "legalNote": "You are responsible for complying with the laws where you live and your network provider's terms. Do not use this feature to reach content that is prohibited by law.",
+    "preset": "preset",
+    "presets": {
+      "light": "Light",
+      "medium": "Medium",
+      "high": "High",
+      "extreme": "Extreme",
+      "mode1": "Mode 1",
+      "mode2": "Mode 2",
+      "mode3": "Mode 3",
+      "mode4": "Mode 4",
+      "mode5": "Mode 5",
+      "mode6": "Mode 6",
+      "custom": "Custom"
+    },
+    "customArgs": "custom arguments",
+    "autotune": "⚡ auto-tune",
+    "scope": "scope",
+    "scopeAll": "all connections",
+    "scopeBlacklist": "blacklist",
+    "blacklistTitle": "Blacklist (one domain per line)",
+    "preview": "command line",
+    "fragment": "DNS FRAGMENT",
+    "chunks": "chunks",
+    "delay": "delay (ms)",
+    "redundant": "ⓘ redundant while DPI bypass is on",
+    "waiting": "Enabled — starts when connected",
+    "starting": "starting…",
+    "probeSites": "TEST SITES",
+    "probeAgain": "⟳ test again",
+    "stage": {
+      "ok": "✓",
+      "dns": "✕ DNS",
+      "tcp": "✕ TCP",
+      "tls": "✕ TLS",
+      "http": "✕ HTTP"
+    },
+    "webFragmentNote": "Web fragment (Proxy page) only applies to apps that use the proxy; the DPI bypass here applies to every app.",
+    "blacklistSuggested": "suggested from the sample sites — edit, then save to use it",
+    "blacklistSaved": "saved",
+    "blacklistSavedRestart": "saved — {{engine}} restarted",
+    "engineTitle": "DPI BYPASS FOR EVERY APP",
+    "engine": {
+      "label": "engine",
+      "zapret2": "zapret2 (recommended)",
+      "goodbyedpi": "GoodbyeDPI",
+      "zapret2Desc": "Stronger: fake packets, more split methods, QUIC support",
+      "goodbyedpiDesc": "The previous engine, simple"
+    },
+    "engineHint": {
+      "text": "Try the new zapret2 engine: stronger, with QUIC support.",
+      "try": "use zapret2",
+      "dismiss": "hide tip"
+    },
+    "fallback": {
+      "text": "zapret2 was blocked (probably by antivirus); GoodbyeDPI is standing in. Add the folder {{dir}} to Windows Defender's exclusions, then try again.",
+      "retry": "retry zapret2"
+    },
+    "autoHostlist": {
+      "label": "detect blocked sites automatically",
+      "empty": "no sites detected yet",
+      "removeOne": "remove {{domain}}",
+      "clear": "remove all"
+    },
+    "blacklistSavedReload": "saved — zapret2 loaded the new list",
+    "autotuneDone": "✓ auto-tune picked {{preset}} ({{engine}})"
+  },
+  "logs": {
+    "title": "LOGS",
+    "all": "all",
+    "engine": "engine",
+    "dpi": "dpi",
+    "system": "system",
+    "pause": "pause",
+    "resume": "resume",
+    "copy": "copy",
+    "save": "save file",
+    "queries": "show queries",
+    "queriesNote": "kept in RAM only, at most 500 lines, never written to disk",
+    "proxy": "proxy",
+    "rules": "rules"
+  },
+  "log": {
+    "CONNECTED": "connected to {{servers}} servers",
+    "DISCONNECTED": "disconnected, DNS restored",
+    "CONNECT_CANCELLED": "connect cancelled",
+    "DEGRADED": "servers not responding, finding new ones",
+    "SWAPPED": "switched to {{servers}} new servers",
+    "SWAP_FAILED": "could not switch servers",
+    "ADAPTER_ADDED": "protected new adapter: {{adapter}}",
+    "SITES_BLOCKED": "{{count}} test sites blocked at TLS",
+    "DPI_STARTED": "{{engine}} started (preset {{preset}})",
+    "DPI_STOPPED": "DPI bypass stopped",
+    "AUTOTUNE_TRY": "auto-tune: trying {{preset}}",
+    "AUTOTUNE_FOUND": "auto-tune: using {{preset}}",
+    "PROXY_STARTED": "proxy running on {{addr}}",
+    "PROXY_RESTART": "proxy stopped listening, restarting",
+    "DPI_FALLBACK": "{{from}} could not start ({{cause}}); using {{to}}",
+    "AUTOTUNE_ENGINE_SWITCHED": "auto-tune switched to {{to}} (preset {{preset}})",
+    "DPI_STRATEGY_RESET": "strategy {{from}} is gone; using {{to}}",
+    "DNSSERVER_STARTED": "DNS server running on {{addrs}} addresses",
+    "DNSSERVER_RESTART": "LAN address changed, restarting the DNS server",
+    "FAKESNI_STARTED": "Fake SNI on for {{domains}} domains",
+    "FAKESNI_ROTATED": "Fake SNI CA replaced ({{domains}} domains)"
+  },
+  "settings": {
+    "title": "SETTINGS",
+    "language": "language",
+    "startWithWindows": "start with windows",
+    "autoConnect": "connect on launch",
+    "closeToTray": "close → minimise to tray",
+    "adapters": "adapters",
+    "adaptersManual": "manual",
+    "testDomain": "test domain",
+    "bootstrap": "bootstrap (ip:port, one per line)",
+    "maxUpstreams": "max servers",
+    "updateServerList": "update server list",
+    "checkApp": "notify about new versions",
+    "restoreNow": "⚠ RESTORE DNS NOW",
+    "restored": "DNS restored",
+    "stopService": "Stop service {{name}}",
+    "stopServiceConfirm": "The Windows service {{name}} holds port 53. Stopping it can break Mobile Hotspot, WSL or Hyper-V until you restart. Continue?",
+    "saved": "saved",
+    "version": "version {{version}}",
+    "about": "VinPN {{version}} · by {{author}}",
+    "github": "GitHub ↗",
+    "update": "new version {{tag}} ↗",
+    "checkUpdate": "check for updates",
+    "checking": "checking…",
+    "upToDate": "up to date ({{version}})",
+    "certs": {
+      "title": "certificates",
+      "none": "no VinPN certificate in Windows",
+      "removeAll": "remove all VinPN certificates",
+      "confirmRemoveAll": "Remove every VinPN certificate? The DNS server and Fake SNI will be turned off.",
+      "retry": "retry removal"
+    },
+    "backup": {
+      "title": "Backup and move to another PC",
+      "note": "Export settings, rules, lists and your own servers to one file to use on another PC.",
+      "export": "export settings…",
+      "import": "import settings…",
+      "exportTitle": "Choose what to export",
+      "doExport": "export",
+      "neverExported": "Never exported: home Wi-Fi name, network adapters, proxy passwords, logs, certificates.",
+      "sec": {
+        "settings": "settings",
+        "rules": "rules and lists",
+        "customServers": "your servers",
+        "dpiBlacklist": "DPI blacklist",
+        "dpiAutoHostlist": "zapret2 learned list"
+      },
+      "importTitle": "Import settings",
+      "fileInfo": "File from VinPN {{version}}, made on {{date}}",
+      "counts": "(new {{new}} · replaced {{replaced}})",
+      "merge": "merge with what is here",
+      "doImport": "import",
+      "imported": "Imported. Press Connect to use the new configuration.",
+      "warn": {
+        "flag_off": {
+          "fakeSni_enabled": "Fake SNI will be turned off; turn it on again on the Fake SNI page if needed.",
+          "dnsServer_enabled": "The DNS server will be turned off; turn it on again on the DNS server page if needed.",
+          "dnsServer_shareLan": "Sharing DNS on the LAN will be turned off.",
+          "proxy_shareLan": "Sharing the proxy on the LAN will be turned off.",
+          "startWithWindows": "Start with Windows will be turned off."
+        },
+        "trusted_reset": {
+          "x": "List \"{{name}}\" is no longer trusted for Fake SNI."
+        },
+        "http_list": {
+          "x": "List \"{{name}}\" downloads over http:// (unencrypted)."
+        }
+      },
+      "sniTitle": "The file has rules that redirect decrypted traffic (sni= / connect=):",
+      "sniAck": "I understand these rules redirect decrypted traffic",
+      "sniDrop": "import but drop these rules"
+    }
+  },
+  "errors": {
+    "NOT_ADMIN": {
+      "message": "VinPN needs administrator rights to change DNS",
+      "action": "Restart VinPN as administrator"
+    },
+    "PORT53_BUSY": {
+      "message": "Port 53 is held by {{name}} (PID {{pid}})",
+      "action": "Close that program or stop the service in Settings"
+    },
+    "SERVICE_NOT_ON_PORT53": {
+      "message": "{{service}} is not holding port 53 anymore",
+      "action": "Run the port check again"
+    },
+    "NO_SERVERS": {
+      "message": "no working servers found ({{checked}} tried in {{elapsed}}s)",
+      "action": "Retry or enable DNS fragmentation"
+    },
+    "ENGINE_SELFTEST_FAILED": {
+      "message": "the local DNS engine failed to start",
+      "action": "Retry; check the logs if it repeats"
+    },
+    "SET_DNS_FAILED": {
+      "message": "could not set DNS on {{adapter}}",
+      "action": "Choose another adapter in Settings"
+    },
+    "VERIFY_LEAK": {
+      "message": "DNS queries are not going through VinPN (a VPN or another tool owns DNS)",
+      "action": "Turn off the VPN/other DNS tool and retry"
+    },
+    "RESTORE_FAILED": {
+      "message": "could not restore the original DNS on {{adapter}}",
+      "action": "Click Restore DNS now"
+    },
+    "DPI_START_FAILED": {
+      "message": "The DPI bypass engine failed to start",
+      "action": "Try another preset"
+    },
+    "DPI_BLOCKED_BY_AV": {
+      "message": "The DPI bypass engine was blocked by antivirus",
+      "action": "Exclude the VinPN folder in your antivirus (WinDivert is often flagged falsely)"
+    },
+    "DPI_HASH_MISMATCH": {
+      "message": "The DPI bypass engine files were changed; VinPN refuses to run them",
+      "action": "Reinstall VinPN"
+    },
+    "SERVERLIST_BAD_SIGNATURE": {
+      "message": "the downloaded server list had a bad signature and was ignored",
+      "action": ""
+    },
+    "UPDATE_CHECK_FAILED": {
+      "message": "could not check for updates",
+      "action": ""
+    },
+    "AUTOTUNE_NO_PRESET": {
+      "message": "no working DPI bypass configuration found",
+      "action": "Try Mode 1–6 or custom arguments in the Full interface"
+    },
+    "INTERNAL": {
+      "message": "internal error at step {{step}}",
+      "action": "Retry; check the logs"
+    },
+    "SETTINGS_RESET": {
+      "message": "the settings file was corrupt, defaults are in use",
+      "action": ""
+    },
+    "STATE_RESET": {
+      "message": "the state file was corrupt; adapters still pointing at VinPN were reset to DHCP",
+      "action": "Re-check adapter DNS if you used static DNS before"
+    },
+    "NOT_CONNECTED": {
+      "message": "connect first to auto-tune DPI bypass",
+      "action": "Connect, then try again"
+    },
+    "PROXY_PORT_BUSY": {
+      "message": "port {{port}} is held by {{name}} (PID {{pid}})",
+      "action": "Change the proxy port or close that program"
+    },
+    "PROXY_SELFTEST_FAILED": {
+      "message": "the proxy failed its self test",
+      "action": "Retry; check the logs if it repeats"
+    },
+    "PROXY_FIREWALL": {
+      "message": "could not create the firewall rule for LAN sharing",
+      "action": "Retry or turn LAN sharing off"
+    },
+    "SYSPROXY_EXISTING": {
+      "message": "this PC already uses another proxy ({{server}}{{pac}}). Replace it? VinPN puts it back when disconnecting.",
+      "action": "",
+      "override": "replace",
+      "keep": "don't use the system proxy"
+    },
+    "SYSPROXY_FAILED": {
+      "message": "could not set the Windows system proxy",
+      "action": "Retry or turn off \"use for this PC\""
+    },
+    "SYSPROXY_TAKEN_OVER": {
+      "message": "another app changed the system proxy; VinPN will not fight it or restore over it",
+      "action": ""
+    },
+    "SYSPROXY_RESTORE_FAILED": {
+      "message": "could not restore the Windows system proxy",
+      "action": "Open Windows Settings → Proxy and turn the manual proxy off",
+      "button": "restore system proxy"
+    },
+    "RULES_PARSE": {
+      "message": "invalid rules on line {{line}}",
+      "action": ""
+    },
+    "LIST_FETCH_FAILED": {
+      "message": "could not download list {{id}}; the previous copy is in use",
+      "action": ""
+    },
+    "LIST_UNSUPPORTED_FORMAT": {
+      "message": "list {{id}} is in an unsupported format",
+      "action": "Pick the format manually or use the text version"
+    },
+    "LIST_TOO_LARGE": {
+      "message": "list {{id}} is too large (50 MB / 2 million entries max) and was turned off",
+      "action": ""
+    },
+    "UPSTREAM_PROXY_FAILED": {
+      "message": "upstream proxy {{id}} is not usable",
+      "action": "Check the address or re-enter the password"
+    },
+    "NO_PINNED_SERVERS": {
+      "message": "no pinned server is usable ({{checked}} checked)",
+      "action": "Pin more servers or turn off \"use pinned servers only\""
+    },
+    "DPI_BLACKLIST_EMPTY": {
+      "message": "the blacklist is empty",
+      "action": "Add at least one domain, or pick \"all connections\""
+    },
+    "DPI_FALLBACK": {
+      "message": "zapret2 was blocked; GoodbyeDPI is standing in",
+      "action": "Add the zapret2 folder to Defender's exclusions"
+    },
+    "AUTOTUNE_ENGINE_SWITCHED": {
+      "message": "Auto-tune switched to GoodbyeDPI",
+      "action": "zapret2 cannot run on this PC"
+    },
+    "STRATEGY_LIST_INVALID": {
+      "message": "The downloaded strategy list is invalid",
+      "action": "VinPN keeps the list in use"
+    },
+    "DPI_CUSTOM_REJECTED": {
+      "message": "That custom argument is not allowed",
+      "action": "Remove {{arg}}"
+    },
+    "DNSSERVER_PORT_IN_USE": {
+      "message": "Port {{port}} is in use ({{addrs}})",
+      "action": "Change the DoH port or close the program holding it"
+    },
+    "DNSSERVER_FIREWALL": {
+      "message": "could not create the DNS server firewall rule: {{detail}}",
+      "action": "Retry or turn off LAN sharing"
+    },
+    "DNSSERVER_SELFTEST_FAILED": {
+      "message": "the DNS server failed its self test",
+      "action": "Retry or open the logs"
+    },
+    "CERT_INSTALL_FAILED": {
+      "message": "could not install the root certificate in Windows",
+      "action": "Retry or open the logs"
+    },
+    "CERT_REMOVE_FAILED": {
+      "message": "a VinPN certificate could not be removed from Windows yet",
+      "action": "Click \"retry removal\", or remove it by hand in certlm.msc (Trusted Root Certification Authorities)"
+    },
+    "CERT_KEY_UNREADABLE": {
+      "message": "the LAN CA key cannot be read (other PC or damaged file)",
+      "action": "Recreate the LAN CA"
+    },
+    "LIST_SIGNATURE_INVALID": {
+      "message": "the list signature is invalid; the previous copy is kept",
+      "action": "Try updating again later"
+    },
+    "SETUP_PAGE_FAILED": {
+      "message": "could not open the phone setup page",
+      "action": "Use \"save files…\""
+    },
+    "FAKESNI_NEEDS_PROXY": {
+      "message": "Fake SNI needs the proxy",
+      "action": "Turn the proxy on"
+    },
+    "FAKESNI_TOO_MANY": {
+      "message": "{{count}} sni= domains, at most 1000",
+      "action": "Turn off some preset groups or lists"
+    },
+    "FAKESNI_SELFTEST_FAILED": {
+      "message": "Windows does not trust the Fake SNI certificate",
+      "action": "Retry or open the logs"
+    },
+    "FAKESNI_NOT_ACKED": {
+      "message": "read and confirm the Fake SNI warning first",
+      "action": "Open the Fake SNI page"
+    },
+    "TOOL_BUSY": {
+      "message": "This tool is already running",
+      "action": "Wait for it or press Cancel"
+    },
+    "LOOKUP_NOT_CONNECTED": {
+      "message": "VinPN is not connected, so it cannot be a lookup source",
+      "action": "Connect, or untick the VinPN source"
+    },
+    "LOOKUP_BAD_NAME": {
+      "message": "Invalid domain or IP",
+      "action": "Fix the domain box"
+    },
+    "SCAN_TOO_MANY": {
+      "message": "Too many servers for one scan",
+      "action": "Raise \"max servers per scan\" or paste fewer lines"
+    },
+    "CFSCAN_NO_NETWORK": {
+      "message": "Could not reach any Cloudflare IP",
+      "action": "Check the network; turn off other VPNs or firewalls and retry"
+    },
+    "CFSCAN_HOST_INVALID": {
+      "message": "The test host is not a valid domain name",
+      "action": "Restore the default"
+    },
+    "STAMP_INVALID": {
+      "message": "Invalid stamp",
+      "action": "Fix the field named"
+    },
+    "IMPORT_INVALID": {
+      "message": "This backup file cannot be used",
+      "action": "Choose another file"
+    },
+    "IMPORT_WHILE_CONNECTED": {
+      "message": "Import works only while disconnected",
+      "action": "Disconnect, then import again"
+    },
+    "IMPORT_EXPIRED": {
+      "message": "The preview has expired",
+      "action": "Choose the file again"
+    },
+    "IMPORT_WRITE_FAILED": {
+      "message": "Could not write the settings; everything was put back as it was",
+      "action": "Retry or open the log"
+    },
+    "EXPORT_WRITE_FAILED": {
+      "message": "Could not write the export file",
+      "action": "Choose another folder"
+    }
+  },
+  "tray": {
+    "connect": "Connect",
+    "disconnect": "Disconnect"
+  },
+  "side": {
+    "connect": "⏻ CONNECT",
+    "disconnect": "⏻ DISCONNECT",
+    "cancel": "■ CANCEL",
+    "summary": "{{latency}} ms · {{count}} servers"
+  },
+  "proxy": {
+    "title": "PROXY",
+    "enabled": "enable proxy",
+    "systemProxy": "use for this PC",
+    "shareLan": "share on LAN",
+    "port": "port",
+    "portInvalid": "the port must be 1024–65535 (and not 53)",
+    "note": "the proxy runs with Connect and always resolves names through VinPN's encrypted DNS",
+    "lan": {
+      "title": "share with other devices",
+      "public": "This network is Public, so other devices cannot connect. Switch it to Private in Windows Settings to share.",
+      "none": "no LAN address found",
+      "qr": "QR code for {{addr}}",
+      "howto": "On a phone: Wi-Fi → this network → Proxy → Manual → enter the address and port above (HTTP)."
+    },
+    "fragment": {
+      "title": "web fragmentation",
+      "mode": "mode",
+      "modes": {
+        "auto": "auto when blocked",
+        "always": "always",
+        "never": "off"
+      },
+      "method": "method",
+      "methods": {
+        "tcp": "TCP",
+        "record": "TLS record",
+        "both": "combined"
+      },
+      "autoTimeout": "wait for server (ms)",
+      "cache": "remembered domains (this network)",
+      "cacheEmpty": "no domains yet",
+      "clearAll": "clear all",
+      "forget": "remove {{host}}"
+    },
+    "upstreams": {
+      "title": "upstream proxies",
+      "add": "+ add",
+      "empty": "no upstream proxies",
+      "id": "id",
+      "type": "type",
+      "addr": "address",
+      "user": "user",
+      "password": "password",
+      "test": "test",
+      "testFor": "test {{id}}",
+      "testOk": "reachable ✓",
+      "edit": "edit",
+      "deleteFor": "remove {{id}}"
+    },
+    "stats": {
+      "title": "statistics",
+      "open": "{{count}} connections",
+      "lan": "{{count}} LAN devices",
+      "direct": "direct",
+      "fragmented": "fragmented",
+      "upstream": "upstream",
+      "blocked": "blocked",
+      "blockedEvenFragmented": "blocked even fragmented"
+    },
+    "hint": {
+      "goodbyedpi": "{{count}} connections were blocked even fragmented — try the DPI bypass on the DPI page"
+    }
+  },
+  "rules": {
+    "title": "RULES",
+    "tabTable": "table",
+    "tabText": "text",
+    "textLabel": "rules text",
+    "lineError": "line {{line}}: {{msg}}",
+    "syntax": "syntax: <pattern> <action…> · patterns: domain, =domain, *.domain, ~keyword, /regexp/, CIDR · actions: block, allow, ip=, fragment=auto|on|off, upstream=<id> · # comment · #! disabled rule",
+    "enableFor": "enable {{pattern}}",
+    "up": "move up {{pattern}}",
+    "down": "move down {{pattern}}",
+    "delete": "remove {{pattern}}",
+    "empty": "no rules yet",
+    "pattern": "pattern",
+    "actionLabel": "action",
+    "add": "+ add rule",
+    "actions": {
+      "block": "block",
+      "allow": "allow",
+      "fragment=on": "fragment: on",
+      "fragment=off": "fragment: off",
+      "ip": "fake DNS (ip)",
+      "upstream": "upstream proxy"
+    },
+    "action": {
+      "block": "block",
+      "allow": "allow",
+      "ip": "fake DNS → {{ips}}",
+      "fragment": "fragment: {{mode}}",
+      "upstream": "upstream: {{id}}",
+      "sni": "sni={{sni}}",
+      "connect": "connect={{host}}"
+    },
+    "frag": {
+      "auto": "auto",
+      "on": "on",
+      "off": "off"
+    },
+    "explain": {
+      "title": "test a domain",
+      "input": "test a domain",
+      "go": "test",
+      "none": "no rule or list matches — goes direct",
+      "direct": "direct",
+      "rule": "rule #{{n}}",
+      "list": "list {{name}}, line {{line}}",
+      "fakesni": "decrypted with Fake SNI (sni={{sni}}, connect={{connect}})",
+      "sniIgnored": "list not trusted for Fake SNI: sni= and connect= ignored"
+    },
+    "lists": {
+      "title": "lists",
+      "quick": "quick add",
+      "refreshAll": "⟳ update all",
+      "refreshFor": "update {{name}}",
+      "skipped": "{{count}} lines skipped",
+      "empty": "no lists yet",
+      "link": "list link",
+      "add": "+ add list",
+      "addItem": "add {{name}}",
+      "addShort": "+ add",
+      "formats": "supported: hosts, domains, AdBlock/AdGuard, dnsmasq, Unbound, RPZ, Clash/Surge, v2ray, sing-box (JSON), CIDR · GitHub links are turned into raw links",
+      "actions": {
+        "block": "block",
+        "allow": "allow",
+        "fragment=on": "fragment: on",
+        "fromFile": "from file (hosts/dnsmasq)"
+      },
+      "all": "all",
+      "search": "search lists",
+      "added": "added",
+      "trustFor": "trust for Fake SNI: {{name}}",
+      "trustConfirm": "Trust this list for Fake SNI? It will choose the fake SNI and the address to connect to for {{count}} domains.",
+      "signed": "signed"
+    },
+    "blockMode": "DNS block answer",
+    "blockModes": {
+      "zero": "0.0.0.0 / ::",
+      "nxdomain": "NXDOMAIN"
+    },
+    "blockModeNote": "applies from the next connect"
+  },
+  "catalog": {
+    "categories": {
+      "ads": "ads / trackers",
+      "security": "security",
+      "adult": "adult",
+      "gambling": "gambling",
+      "social": "social networks",
+      "telemetry": "device telemetry",
+      "vietnam": "Vietnam",
+      "bypass": "unblocking",
+      "fakesni": "Fake SNI"
+    },
+    "items": {
+      "hagezi-light": "Basic protection: ads, trackers, metrics, telemetry. Small and safe.",
+      "hagezi-normal": "All-round protection against ads, tracking and badware.",
+      "hagezi-pro": "Extended protection: also phishing, malware, scams. Recommended by its author.",
+      "hagezi-pro-plus": "Maximum protection; may block a few legitimate sites.",
+      "hagezi-ultimate": "Aggressive protection; expect occasional false positives.",
+      "oisd-small": "Block. Don't break. Small edition.",
+      "oisd-big": "Block. Don't break. Full edition.",
+      "stevenblack-unified": "Classic unified hosts file: adware and malware.",
+      "adguard-dns": "AdGuard's DNS-level filter (AdBlock syntax).",
+      "adaway": "Mobile-focused ad blocking hosts file.",
+      "1hosts-lite": "Lightweight ads and tracking list.",
+      "hagezi-tif-mini": "Malware, phishing, scam and cryptojacking domains (compact).",
+      "hagezi-fake": "Fake shops, scams and rip-off sites.",
+      "urlhaus": "Hosts currently distributing malware.",
+      "phishing-army": "Phishing domains from several feeds.",
+      "hagezi-nsfw": "Adult content.",
+      "stevenblack-porn": "Adult content (hosts format).",
+      "hagezi-gambling-mini": "Gambling sites (compact).",
+      "stevenblack-gambling": "Gambling sites (hosts format).",
+      "stevenblack-social": "Social networks (Facebook, Instagram, TikTok, X…), e.g. for parental control.",
+      "hagezi-windows": "Windows and Office tracking and telemetry.",
+      "hagezi-tiktok": "TikTok tracking (the app keeps working).",
+      "hagezi-samsung": "Samsung device tracking.",
+      "hagezi-apple": "Apple device tracking.",
+      "hostsvn": "Ads and trackers common on Vietnamese sites.",
+      "v2fly-discord": "Discord domains: fragment through the proxy.",
+      "v2fly-twitter": "X (Twitter) domains: fragment through the proxy.",
+      "v2fly-facebook": "Facebook domains: fragment through the proxy.",
+      "v2fly-youtube": "YouTube domains: fragment through the proxy.",
+      "v2fly-reddit": "Reddit domains: fragment through the proxy.",
+      "fakesni-google": "Domain fronting through www.google.com for YouTube and Google services. Signed by VinPN."
+    }
+  },
+  "dnsserver": {
+    "disconnectConfirm": "Devices on your network using this PC's DNS: {{count}}. They will lose the internet. Disconnect anyway?",
+    "title": "DNS server",
+    "enabled": "local DoH",
+    "shareLan": "share on the LAN",
+    "dohPort": "DoH port",
+    "portInvalid": "the DoH port must be 1–65535 and differ from 53, 8053 and the proxy port",
+    "listening": "listening",
+    "skipped": "skipped {{addr}}: {{why}}",
+    "note": "Local DoH for browsers on this PC. Sharing on the LAN adds DoH and port-53 DNS on the LAN addresses (Private networks only).",
+    "stats": "{{queries}} queries · {{clients}} devices in 10 minutes",
+    "devices": {
+      "title": "use on other devices",
+      "dnsIp": "DNS IP",
+      "dnsIpHint": "Router, TV, Android, Steam Deck: set this IP as the DNS for your home Wi-Fi only. No certificate needed.",
+      "doh": "DoH URL",
+      "fingerprint": "LAN CA fingerprint",
+      "ssid": "home Wi-Fi name",
+      "openSetup": "open the phone setup page",
+      "setupNeedsShare": "Connect and turn on LAN sharing to open the setup page.",
+      "closeSetup": "close the setup page",
+      "setupQr": "QR code for {{url}}",
+      "remaining": "closes in {{time}}",
+      "saveFiles": "save files…",
+      "notShared": "turn on \"share on the LAN\" and connect so other devices can use it",
+      "ssidWarning": "No home Wi-Fi name yet: pick or type it here (exactly as on the phone). If you leave it empty, iPhone users must type the Wi-Fi name on the setup page."
+    },
+    "ca": {
+      "title": "LAN CA",
+      "none": "no LAN CA yet (created the first time the DNS server runs)",
+      "reset": "recreate the LAN CA",
+      "remove": "remove the LAN CA",
+      "confirmReset": "Create a new LAN CA? Devices with the old one must install it again.",
+      "confirmRemove": "Remove the LAN CA from this PC? The DNS server will be turned off."
+    }
+  },
+  "fakesni": {
+    "title": "Fake SNI",
+    "warning": {
+      "title": "Read this before turning Fake SNI on",
+      "p1": "Fake SNI decrypts HTTPS for domains with an sni= rule, then opens a new connection to the server with a fake domain name so your ISP cannot see which site you visit.",
+      "p2": "Meanwhile VinPN sees the decrypted content of those domains. It stays in RAM only and is never stored or logged.",
+      "p3": "Apps that pin certificates (some banking apps, native apps) will fail for those domains.",
+      "p4": "Do not use it for banking or important accounts.",
+      "p5": "The VinPN root certificate installed in Windows can sign only the domains in your rules and is removed when you disconnect.",
+      "p6": "It applies only to browsers on this PC going through VinPN's proxy.",
+      "understood": "I understand",
+      "continue": "continue"
+    },
+    "enabled": "turn Fake SNI on",
+    "needsProxy": "Fake SNI needs the proxy",
+    "enableProxy": "turn the proxy on",
+    "presets": "preset groups",
+    "rules": "hand-written sni= rules",
+    "noRules": "no hand-written sni= rules yet",
+    "ca": "session CA",
+    "caInfo": "{{domains}} domains · expires {{date}}",
+    "caNone": "no session CA (Fake SNI is not running)",
+    "stats": {
+      "fakesni": "decrypted: {{n}}",
+      "fallback": "fell back to fragment: {{n}}",
+      "clientRejected": "browser refused: {{n}}",
+      "verifyFailed": "bad server certificate: {{n}}"
+    },
+    "firefox": "Firefox: if it reports a certificate error, set security.enterprise_roots.enabled in about:config.",
+    "banner": "Fake SNI is on — VinPN is decrypting HTTPS for {{count}} domains",
+    "view": "view",
+    "off": "turn Fake SNI off"
+  },
+  "tools": {
+    "title": "Tools",
+    "copy": "copy",
+    "tab": {
+      "logs": "logs",
+      "lookup": "lookup",
+      "scanner": "scanner",
+      "cfscan": "cloudflare ip",
+      "stamp": "stamp"
+    },
+    "lookup": {
+      "name": "domain",
+      "placeholder": "e.g. youtube.com, or an IP for PTR",
+      "type": "record type",
+      "run": "look up",
+      "isp": "ISP DNS {{ip}}",
+      "unencrypted": "unencrypted",
+      "addSource": "add source",
+      "addSourceHint": "server URL/stamp, or a plain DNS IP",
+      "add": "add",
+      "ispNote": "The ISP DNS source sends an unencrypted query: your ISP sees the domain you look up. Use it only to compare when diagnosing.",
+      "details": "details",
+      "col": {
+        "source": "source",
+        "status": "status",
+        "latency": "latency",
+        "answer": "answer"
+      },
+      "per": {
+        "poisoned": "poisoned",
+        "differs": "differs",
+        "match": "match",
+        "failed": "failed"
+      },
+      "fail": {
+        "timeout": "timed out",
+        "bootstrap": "server name not resolved",
+        "error": "error"
+      },
+      "verdict": {
+        "poisoned": {
+          "title": "DNS is poisoned",
+          "body": "At least one source answered a private IP, or said the domain does not exist while another source has addresses. That is how ISPs block with DNS."
+        },
+        "differs": {
+          "title": "Answers differ",
+          "body": "The sources answered different addresses. CDNs answer by location, so this is not necessarily blocking."
+        },
+        "match": {
+          "title": "Answers match",
+          "body": "The sources answered the same addresses (or the same CDN)."
+        },
+        "failed": {
+          "title": "No source answered",
+          "body": "Every source failed or timed out. Check the network."
+        }
+      },
+      "running": "looking up…",
+      "busy": "Looking up {{name}} through {{count}} sources… (at most 5 seconds each)"
+    },
+    "stamp": {
+      "decodeTitle": "Decode",
+      "buildTitle": "Build a stamp",
+      "input": "stamps to decode",
+      "decode": "decode",
+      "add": "add to servers",
+      "added": "Added {{count}} server(s)",
+      "notUsable": "VinPN does not use this type",
+      "ipOptional": "IP (optional)",
+      "fromUrl": "fill from URL",
+      "build": "build stamp",
+      "f": {
+        "proto": "protocol",
+        "addr": "IP address",
+        "host": "host",
+        "path": "path",
+        "providerName": "provider name",
+        "publicKey": "public key",
+        "hashes": "certificate hashes"
+      }
+    },
+    "scan": "scan",
+    "cancel": "cancel",
+    "options": "options",
+    "select": "select {{what}}",
+    "tri": {
+      "yes": "yes",
+      "no": "no",
+      "partial": "partly",
+      "unknown": "?"
+    },
+    "scanner": {
+      "fromList": "server list",
+      "fromPaste": "paste a list",
+      "pinnedOnly": "pinned servers only",
+      "pasteLabel": "servers to scan",
+      "badLines": "Skipped invalid lines: {{lines}}",
+      "onlyDNSSEC": "only servers with DNSSEC",
+      "onlyAds": "only ad-filtering servers",
+      "pinSelected": "pin selected",
+      "exportCsv": "export CSV",
+      "col": {
+        "server": "server",
+        "median": "median",
+        "loss": "loss",
+        "ads": "ads",
+        "poison": "poisoned"
+      },
+      "unreachable": "unusable ({{reason}})",
+      "add": "add",
+      "added": "Added to the server list",
+      "useOnly": "use only",
+      "rounds": "rounds",
+      "workers": "workers",
+      "timeoutMs": "per-query timeout (ms)",
+      "matching": "{{count}} servers match",
+      "willCap": "{{max}} priority servers will be scanned (pinned, good last time, built in)",
+      "capped": "Scanned {{max}} priority servers and skipped {{skipped}}. Raise \"max servers per scan\" in the options, or narrow the filter (protocol, tags).",
+      "maxServers": "max servers per scan",
+      "maxServersNote": "50–2000. More servers take longer: 500 take about 1–2 minutes, 2000 about 6–8; a scan stops after at most 10 minutes."
+    },
+    "cfscan": {
+      "probePhase": "tried {{tried}} · working {{ok}}",
+      "speedPhase": "measuring download speed of the best IPs…",
+      "direct": "The scan goes straight out, not through VinPN's proxy; port 443 only, at most 200 new connections per second.",
+      "scannedAt": "scanned at {{time}}",
+      "createRule": "create rule",
+      "recheck": "check again",
+      "col": {
+        "latency": "latency"
+      },
+      "note": {
+        "no_speed_endpoint": "The test host has no /__down, so the speed test was skipped."
+      },
+      "ruleNote": "An ip= rule only affects apps that use VinPN's DNS or proxy, and only works for domains that really are behind Cloudflare.",
+      "tooManyIps": "Choose at most {{max}} IPs for one rule.",
+      "domains": "domain",
+      "suggest": "suggestions:",
+      "create": "create",
+      "ruleCreated": "Created ip= rules on the Rules page.",
+      "host": "test host",
+      "restoreDefault": "restore default",
+      "maxIps": "max IPs",
+      "want": "stop after (0 = all)",
+      "concurrency": "parallel connections",
+      "timeoutMs": "per-IP timeout (ms)",
+      "speedTest": "download speed test",
+      "rechecking": "checking…"
+    }
+  }
+}

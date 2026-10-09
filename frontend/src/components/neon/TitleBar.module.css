@@ -1,0 +1,66 @@
+.bar {
+  flex-shrink: 0;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.controls button {
+  color: var(--dim);
+  letter-spacing: 0.1em;
+}
+
+.controls button:hover {
+  color: var(--accent);
+}
+
+.lang {
+  border: 1px solid var(--line-strong);
+  padding: 0 6px;
+  color: var(--accent) !important;
+}
+
+/* Simple / Full: the original row, made easier to spot. */
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px 14px 0;
+  font-size: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tabs button {
+  padding: 6px 10px;
+  margin-bottom: -1px;
+  color: var(--text);
+  letter-spacing: 0.08em;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs button:hover {
+  color: var(--accent);
+}
+
+.tabs .on {
+  color: var(--accent);
+  font-weight: 700;
+  border-bottom-color: var(--accent);
+}
